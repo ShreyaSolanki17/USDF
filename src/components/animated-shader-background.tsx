@@ -1,15 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-import { Infinity, Rocket, Shield, Brain, Play, ChevronDown } from 'lucide-react';
 
-const AnoAI = () => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+const AnimatedShaderBackground = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const container = containerRef.current;
-    if (!container) {
-      return;
-    }
+    if (!container) return;
+
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
     const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -92,7 +90,7 @@ const AnoAI = () => {
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
-    let frameId: number;
+    let frameId: number | undefined;
     const animate = () => {
       material.uniforms.iTime.value += 0.016;
       renderer.render(scene, camera);
@@ -107,9 +105,13 @@ const AnoAI = () => {
     window.addEventListener('resize', handleResize);
 
     return () => {
-      cancelAnimationFrame(frameId);
+      if (frameId !== undefined) {
+        cancelAnimationFrame(frameId);
+      }
       window.removeEventListener('resize', handleResize);
-      container.removeChild(renderer.domElement);
+      if (container) {
+        container.removeChild(renderer.domElement);
+      }
       geometry.dispose();
       material.dispose();
       renderer.dispose();
@@ -123,4 +125,4 @@ const AnoAI = () => {
   );
 };
 
-export default AnoAI;
+export default AnimatedShaderBackground;
