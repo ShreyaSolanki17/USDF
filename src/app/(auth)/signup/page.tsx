@@ -25,20 +25,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-const nameField = z
-  .union([
-    z.string().trim().min(2, "Name must have at least 2 characters.").max(60, "Name must be shorter than 60 characters."),
-    z.literal(""),
-  ])
-  .optional()
-  .transform((value) => {
-    if (!value) return undefined;
-    const trimmed = value.trim();
-    return trimmed.length === 0 ? undefined : trimmed;
-  });
-
 const signupSchema = z.object({
-  name: nameField,
+  name: z
+    .string()
+    .min(2, "Name must have at least 2 characters.")
+    .max(60, "Name must be shorter than 60 characters.")
+    .optional(),
   email: z.string().email("Please enter a valid email."),
   password: z.string().min(8, "Passwords must be at least 8 characters."),
 });
@@ -53,7 +45,7 @@ export default function SignupPage() {
   const form = useForm<SignupValues>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
-      name: "",
+      name: undefined,
       email: "",
       password: "",
     },
@@ -82,7 +74,7 @@ export default function SignupPage() {
           "Account created. Check your email for the verification link."
       );
       form.reset({
-        name: "",
+        name: undefined,
         email: "",
         password: "",
       });
@@ -115,6 +107,12 @@ export default function SignupPage() {
                     <FormControl>
                       <Input
                         {...field}
+                        value={field.value ?? ""}
+                        onChange={(event) =>
+                          field.onChange(
+                            event.target.value.length ? event.target.value : undefined
+                          )
+                        }
                         placeholder="Alicia Keys"
                         className="bg-slate-900/60"
                       />
