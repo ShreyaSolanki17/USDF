@@ -28,12 +28,20 @@ async function sendEmail(payload: EmailPayload) {
     return;
   }
 
-  await resend.emails.send({
-    from: emailFrom,
-    to: payload.to,
-    subject: payload.subject,
-    html: payload.html,
-  });
+  try {
+    await resend.emails.send({
+      from: emailFrom,
+      to: payload.to,
+      subject: payload.subject,
+      html: payload.html,
+    });
+  } catch (error) {
+    console.error("[email] Failed to send email via Resend:", {
+      payload,
+      error,
+    });
+    throw error;
+  }
 }
 
 export async function sendVerificationEmail(email: string, token: string) {
