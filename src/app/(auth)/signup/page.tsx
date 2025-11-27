@@ -133,7 +133,7 @@ export default function SignupPage() {
                         {...field}
                         type="email"
                         autoComplete="email"
-                        placeholder="you@example.com"
+                        placeholder="noreply@flavidairysolution.com"
                         className="bg-slate-900/60"
                       />
                     </FormControl>
