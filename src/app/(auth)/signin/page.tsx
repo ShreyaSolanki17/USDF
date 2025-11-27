@@ -2,10 +2,13 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import { Loader2 } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -37,6 +40,7 @@ export default function SigninPage() {
   const [serverMessage, setServerMessage] = useState<string | null>(null);
   const [serverError, setServerError] = useState<string | null>(null);
   const [pendingAction, setPendingAction] = useState<PendingAction>(null);
+  const router = useRouter();
 
   const form = useForm<SigninValues>({
     resolver: zodResolver(signinSchema),
@@ -63,21 +67,27 @@ export default function SigninPage() {
     setServerError(null);
 
     await runAction("signin", async () => {
-      const response = await fetch("/api/auth/signin", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+      const result = await signIn("credentials", {
+        email: values.email,
+        password: values.password,
+        redirect: false,
       });
-      const data = await response.json();
 
-      if (!response.ok) {
-        setServerError(data.error ?? "Unable to sign in.");
+      if (result?.error) {
+        setServerError(result.error);
         return;
       }
 
-      setServerMessage(data.message ?? "Signed in successfully.");
+      setServerMessage("Signed in successfully.");
       form.reset({ email: values.email, password: "" });
+      router.push("/");
     });
+  };
+
+  const handleGoogleSignIn = async () => {
+    setServerMessage(null);
+    setServerError(null);
+    await signIn("google", { callbackUrl: "/" });
   };
 
   const triggerForgotPassword = async () => {
@@ -204,6 +214,25 @@ export default function SigninPage() {
               </Button>
             </form>
           </Form>
+
+          <div className="space-y-3">
+            <div className="flex items-center gap-4">
+              <span className="h-px flex-1 bg-slate-800" />
+              <span className="text-xs uppercase tracking-widest text-slate-500">
+                or
+              </span>
+              <span className="h-px flex-1 bg-slate-800" />
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full border-slate-700 bg-transparent text-white hover:bg-slate-900"
+              onClick={handleGoogleSignIn}
+            >
+              <FcGoogle className="mr-2 h-5 w-5" />
+              Continue with Google
+            </Button>
+          </div>
 
           <div className="space-y-2 text-sm">
             <button

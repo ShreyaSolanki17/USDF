@@ -43,12 +43,12 @@ export async function POST(request: Request) {
       );
     }
 
-    await prisma.verificationToken.deleteMany({ where: { userId: user.id } });
+    await prisma.emailVerificationToken.deleteMany({ where: { userId: user.id } });
 
     const token = generateToken();
     const tokenHash = hashToken(token);
 
-    await prisma.verificationToken.create({
+    await prisma.emailVerificationToken.create({
       data: {
         tokenHash,
         userId: user.id,

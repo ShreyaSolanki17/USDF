@@ -14,7 +14,7 @@ async function handleVerification(token: string | null) {
   }
 
   const tokenHash = hashToken(token);
-  const verificationToken = await prisma.verificationToken.findUnique({
+  const verificationToken = await prisma.emailVerificationToken.findUnique({
     where: { tokenHash },
   });
 
@@ -30,7 +30,7 @@ async function handleVerification(token: string | null) {
       where: { id: verificationToken.userId },
       data: { emailVerified: new Date() },
     }),
-    prisma.verificationToken.delete({ where: { id: verificationToken.id } }),
+    prisma.emailVerificationToken.delete({ where: { id: verificationToken.id } }),
   ]);
 
   return NextResponse.json(
