@@ -5,7 +5,9 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { signIn } from "next-auth/react";
 import { Loader2 } from "lucide-react";
+import { FcGoogle } from "react-icons/fc";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -84,6 +86,12 @@ export default function SignupPage() {
     } finally {
       setIsSubmitting(false);
     }
+  };
+
+  const handleGoogleSignUp = async () => {
+    setServerMessage(null);
+    setServerError(null);
+    await signIn("google", { callbackUrl: "/" });
   };
 
   return (
@@ -170,6 +178,25 @@ export default function SignupPage() {
               </Button>
             </form>
           </Form>
+
+          <div className="space-y-3">
+            <div className="flex items-center gap-4">
+              <span className="h-px flex-1 bg-slate-800" />
+              <span className="text-xs uppercase tracking-widest text-slate-500">
+                or
+              </span>
+              <span className="h-px flex-1 bg-slate-800" />
+            </div>
+            <Button
+              type="button"
+              variant="outline"
+              className="w-full border-slate-700 bg-transparent text-white hover:bg-slate-900"
+              onClick={handleGoogleSignUp}
+            >
+              <FcGoogle className="mr-2 h-5 w-5" />
+              Continue with Google
+            </Button>
+          </div>
 
           {serverMessage && (
             <p className="rounded-md bg-emerald-500/10 px-3 py-2 text-sm text-emerald-400">
