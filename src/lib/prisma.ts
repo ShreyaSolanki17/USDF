@@ -30,11 +30,13 @@ const mongoAdapterFactory = {
   },
 };
 
+// Prisma 7 with MongoDB requires an adapter, but TypeScript types don't fully support MongoDB adapters
+// The runtime accepts this adapter, but TypeScript types are designed for SQL adapters
+// Using type assertion to work around TypeScript limitations
 export const prisma =
   globalForPrisma.prisma ??
-  new PrismaClient({
-    // Prisma 7 requires an adapter for MongoDB
-    adapter: mongoAdapterFactory as any,
+  new (PrismaClient as any)({
+    adapter: mongoAdapterFactory,
     log: process.env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
   });
 
