@@ -1,4 +1,4 @@
-export const WHATSAPP_NUMBER = "15551234567" // Replace with actual business number
+export const WHATSAPP_NUMBER = "917984140706" // Updated with provided number
 
 export function sendToWhatsApp(data: Record<string, string>, messagePrefix: string = "New Form Submission:") {
     const formattedMessage = Object.entries(data)
