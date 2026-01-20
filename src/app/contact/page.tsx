@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle2, ArrowRight, Loader2 } from "lucide-react"
+import { Phone, Mail, MapPin, Clock, CheckCircle2, ArrowRight, Loader2, MessageCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/ui/navbar"
 import { Footer } from "@/components/ui/footer"
@@ -77,8 +77,15 @@ export default function ContactPage() {
         e.preventDefault()
         setIsSubmitting(true)
         
-        // Simulate form submission
-        await new Promise(resolve => setTimeout(resolve, 1500))
+        // Format message for WhatsApp
+        const whatsappMessage = `*New Contact Inquiry*%0A%0A*Name:* ${encodeURIComponent(formData.name)}%0A*Email:* ${encodeURIComponent(formData.email)}%0A*Phone:* ${encodeURIComponent(formData.phone || 'Not provided')}%0A*Subject:* ${encodeURIComponent(formData.subject)}%0A%0A*Message:*%0A${encodeURIComponent(formData.message)}`
+        
+        // WhatsApp number (without + and dashes)
+        const whatsappNumber = "16056906080"
+        
+        // Open WhatsApp with pre-filled message
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
+        window.open(whatsappUrl, '_blank')
         
         setIsSubmitting(false)
         setIsSubmitted(true)
@@ -299,8 +306,8 @@ export default function ContactPage() {
                                                     </>
                                                 ) : (
                                                     <>
-                                                        Send Message
-                                                        <Send className="ml-2 w-5 h-5" />
+                                                        Send via WhatsApp
+                                                        <MessageCircle className="ml-2 w-5 h-5" />
                                                     </>
                                                 )}
                                             </Button>
@@ -346,6 +353,20 @@ export default function ContactPage() {
                                 <Card className="p-6 bg-white border-border/50">
                                     <h3 className="font-bold mb-4">Quick Contact</h3>
                                     <div className="space-y-4">
+                                        <a 
+                                            href="https://wa.me/16056906080?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20consulting%20services."
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="flex items-center gap-3 p-3 rounded-lg bg-green-50 hover:bg-green-100 transition-colors border border-green-200"
+                                        >
+                                            <div className="w-10 h-10 rounded-lg bg-green-500 flex items-center justify-center">
+                                                <MessageCircle className="w-5 h-5 text-white" />
+                                            </div>
+                                            <div>
+                                                <p className="font-medium text-green-700">WhatsApp Us</p>
+                                                <p className="text-sm text-green-600">Quick response guaranteed</p>
+                                            </div>
+                                        </a>
                                         <a 
                                             href="tel:+16056906080" 
                                             className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors"
