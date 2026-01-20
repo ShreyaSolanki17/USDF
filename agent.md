@@ -63,7 +63,7 @@ Comprehensive consulting services tailored to the dairy and food industry:
 
 ## Footer Information
 - **Quick Links:** About Us, Services, Industry, Collaborator, Contact Us.
-- **Copyright:** "Copyright 2025 US Dairy & Foods. All Rights Received. Developed by Triovate PVT LTD"
+- **Copyright:** "Copyright 2025 US Dairy & Foods. All Rights Received. Developed by FlaviDairy Solutions PVT LTD"
 
 ---
 

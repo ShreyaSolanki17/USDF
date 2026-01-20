@@ -126,7 +126,7 @@ export function Footer() {
                             Copyright &copy; {new Date().getFullYear()} US Dairy & Foods Consulting LLC. All Rights Reserved.
                         </p>
                         <p className="text-slate-600 text-xs">
-                            Developed by <span className="text-slate-400">Triovate PVT LTD</span>
+                            Developed by <span className="text-slate-400">FlaviDairy Solutions PVT LTD</span>
                         </p>
                     </div>
                 </div>
