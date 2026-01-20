@@ -27,8 +27,15 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Morphix | Enterprise Data Transformation",
-  description: "Transform messy spreadsheets into perfect databases instantly with AI-powered data transformation.",
+  title: "USDF | US Dairy & Foods Consulting",
+  description: "USA's Top Food & Dairy Solutions Partner for Business Expansion. Expert guidance on dairy processing, food safety, product development, and operational excellence.",
+  keywords: ["dairy consulting", "food consulting", "dairy processing", "food safety", "product development", "USDF", "Dr. Hasmukh Patel"],
+  authors: [{ name: "US Dairy & Foods Consulting LLC" }],
+  openGraph: {
+    title: "USDF | US Dairy & Foods Consulting",
+    description: "USA's Top Food & Dairy Solutions Partner for Business Expansion",
+    type: "website",
+  },
 }
 
 export default function RootLayout({

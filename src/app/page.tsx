@@ -1,324 +1,578 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowRight, Check, Play, Upload, Database, FileSpreadsheet, Lock, Zap } from "lucide-react"
+import { ArrowRight, Award, Users, Target, Lightbulb, Shield, Beaker, Factory, Wrench, TrendingUp, CheckCircle2, Phone, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/ui/navbar"
 import { Footer } from "@/components/ui/footer"
 import { Card } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
-import { Hero3D } from "@/components/hero-3d"
+import { TestimonialsSection } from "@/components/devComponents/testimonials-with-marquee"
+import { FocusRail, FocusRailItem } from "@/components/focus-rail"
 
-export default function Home() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
+// Collaborator logos
+const collaborators = [
+    "General Mills",
+    "Amul",
+    "Vadilal Ice Cream",
+    "Paras/VRS Foods",
+    "Flavi Dairy Solutions"
+]
+
+// Core values
+const coreValues = [
+    {
+        icon: Award,
+        title: "Experience",
+        description: "Bringing extensive industry experience to enhance performance and drive sustainable growth in the dairy and food sector."
+    },
+    {
+        icon: Target,
+        title: "Expertise",
+        description: "Leveraging diverse expertise across multiple domains to meet your unique business needs and challenges."
+    },
+    {
+        icon: Lightbulb,
+        title: "Excellence",
+        description: "Implementing advanced solutions and best practices for superior manufacturing processes and outcomes."
     }
-  }
+]
 
-  const itemVariants = {
+// Services preview
+const services = [
+    {
+        icon: TrendingUp,
+        title: "Strategic Planning",
+        description: "Market analysis, regulatory compliance, and operational optimization strategies.",
+        href: "/services#strategic-planning"
+    },
+    {
+        icon: Shield,
+        title: "Technology Assessment",
+        description: "System evaluation, automation integration, and advanced processing techniques.",
+        href: "/services#technology"
+    },
+    {
+        icon: Factory,
+        title: "Dairy & Food Manufacturing",
+        description: "Sourcing, formulation optimization, and cost-effective ingredient solutions.",
+        href: "/services#manufacturing"
+    },
+    {
+        icon: Beaker,
+        title: "Research & Development",
+        description: "New product development, nutritional enhancement, and consumer insights.",
+        href: "/services#rd"
+    },
+    {
+        icon: Lightbulb,
+        title: "Product Development",
+        description: "From concept validation to large-scale commercialization support.",
+        href: "/services#product-dev"
+    },
+    {
+        icon: Wrench,
+        title: "Technical Support",
+        description: "Troubleshooting, process optimization, and quality assurance.",
+        href: "/services#technical"
+    }
+]
+
+// Stats
+const stats = [
+    { value: "20+", label: "Years Experience" },
+    { value: "100+", label: "Projects Delivered" },
+    { value: "50+", label: "Happy Clients" },
+    { value: "5", label: "Industry Sectors" }
+]
+
+// Focus Rail Items - Showcase
+const focusRailItems: FocusRailItem[] = [
+    {
+        id: 1,
+        title: "Dairy Processing Excellence",
+        description: "State-of-the-art dairy processing facilities and equipment optimization.",
+        imageSrc: "/photos/dairyimg.jpg",
+        href: "/services#manufacturing",
+        meta: "Manufacturing"
+    },
+    {
+        id: 2,
+        title: "Quality Assurance",
+        description: "Rigorous quality control processes ensuring the highest standards.",
+        imageSrc: "/Images/53690cc4-4537-4d66-a9d0-c9faaf0f8ab0.jpg",
+        href: "/services#technical",
+        meta: "Quality Control"
+    },
+    {
+        id: 3,
+        title: "Research & Development",
+        description: "Innovative R&D solutions driving product excellence and market growth.",
+        imageSrc: "/Images/fa30e9fa-ee27-4346-9529-5e578c173d4c.jpg",
+        href: "/services#rd",
+        meta: "Innovation"
+    },
+    {
+        id: 4,
+        title: "Food Safety Compliance",
+        description: "Comprehensive food safety programs meeting global regulatory standards.",
+        imageSrc: "/Images/fb3319a3-54a2-4246-b5b6-da3b2d23e3fe.jpg",
+        href: "/services#strategic-planning",
+        meta: "Compliance"
+    },
+    {
+        id: 5,
+        title: "Product Development",
+        description: "From concept to commercialization - bringing your ideas to market.",
+        imageSrc: "/photos/d2.jpg",
+        href: "/services#product-dev",
+        meta: "Development"
+    }
+]
+
+// Testimonials
+const testimonials = [
+    {
+        author: {
+            name: "Rajesh Kumar",
+            handle: "General Mills",
+            avatar: "https://i.pravatar.cc/150?img=11"
+        },
+        text: "USDF's expertise in dairy processing helped us optimize our production line, resulting in 30% efficiency improvement. Their team is professional and knowledgeable."
+    },
+    {
+        author: {
+            name: "Priya Sharma",
+            handle: "Vadilal Ice Cream",
+            avatar: "https://i.pravatar.cc/150?img=5"
+        },
+        text: "Working with Dr. Patel and his team was transformative for our R&D department. Their insights into new product development are invaluable."
+    },
+    {
+        author: {
+            name: "Michael Anderson",
+            handle: "Food Processing Industry",
+            avatar: "https://i.pravatar.cc/150?img=12"
+        },
+        text: "The strategic planning services provided by USDF helped us navigate complex regulatory requirements seamlessly. Highly recommended!"
+    },
+    {
+        author: {
+            name: "Amit Patel",
+            handle: "Dairy Manufacturer",
+            avatar: "https://i.pravatar.cc/150?img=8"
+        },
+        text: "USDF delivered a turn-key project that exceeded our expectations. From facility design to equipment selection, everything was handled professionally."
+    },
+    {
+        author: {
+            name: "Sarah Johnson",
+            handle: "FMCG Company",
+            avatar: "https://i.pravatar.cc/150?img=9"
+        },
+        text: "Their technology assessment services identified critical areas for automation that we had overlooked. This has been a game-changer for our operations."
+    }
+]
+
+// Animation variants
+const fadeInUp = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-  }
-
-  return (
-    <div className="min-h-screen bg-background flex flex-col font-sans">
-      <Navbar />
-
-      <main className="flex-grow">
-        {/* --- HERO SECTION --- */}
-        <section className="relative pt-20 pb-32 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-purple-50/50 to-white -z-20" />
-          <Hero3D />
-
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <motion.div
-              className="text-center max-w-4xl mx-auto mb-16"
-              initial="hidden"
-              animate="visible"
-              variants={containerVariants}
-            >
-              <motion.div variants={itemVariants} className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary/10 text-primary hover:bg-primary/20 mb-6">
-                Now available for Enterprise
-              </motion.div>
-              <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold tracking-tight text-gray-900 mb-6 font-display">
-                Transform Any Data, <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">
-                  Instantly.
-                </span>
-              </motion.h1>
-              <motion.p variants={itemVariants} className="mt-4 text-xl text-gray-500 max-w-2xl mx-auto mb-10">
-                From messy spreadsheets to perfect databases. AI-powered data transformation for modern enterprises.
-              </motion.p>
-              <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center gap-4">
-                <Link href="/book-demo">
-                  <Button size="lg" variant="gradient" className="w-full sm:w-auto text-lg px-8 h-12">
-                    Book a Demo
-                  </Button>
-                </Link>
-                <Link href="/demo">
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto text-lg px-8 h-12 gap-2">
-                    <Play className="w-4 h-4 ml-1 fill-current" /> Watch Demo
-                  </Button>
-                </Link>
-              </motion.div>
-            </motion.div>
-
-            {/* Animation Placeholder / Visual */}
-            <motion.div
-              initial={{ opacity: 0, y: 40, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
-              className="relative mx-auto max-w-5xl rounded-2xl border bg-white/50 backdrop-blur-sm p-4 shadow-2xl ring-1 ring-gray-900/10"
-            >
-              <div className="aspect-[16/9] rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                  {/* Blob Animations via Tailwind (globals.css/tw-animate dependency) */}
-                  <div className="w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse absolute top-0 left-0"></div>
-                  <div className="w-96 h-96 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-pulse absolute bottom-0 right-0"></div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center z-10 p-8 w-full max-w-4xl">
-                  {/* Step 1 */}
-                  <Card className="p-6 bg-white shadow-lg border-l-4 border-l-red-400 transform md:-rotate-3 hover:rotate-0 transition-transform duration-500">
-                    <div className="flex items-center gap-3 mb-3 text-red-600">
-                      <FileSpreadsheet className="w-6 h-6" />
-                      <span className="font-semibold text-sm">Messy Data.xlsx</span>
-                    </div>
-                    <div className="space-y-2 opacity-50">
-                      <div className="h-2 bg-gray-200 rounded w-full"></div>
-                      <div className="h-2 bg-gray-200 rounded w-3/4"></div>
-                      <div className="h-2 bg-gray-200 rounded w-5/6"></div>
-                    </div>
-                  </Card>
-
-                  <div className="flex justify-center text-primary">
-                    <ArrowRight className="w-8 h-8 animate-pulse" />
-                  </div>
-
-                  {/* Step 2 */}
-                  <Card className="p-6 bg-white shadow-lg border-l-4 border-l-green-500 transform md:rotate-3 hover:rotate-0 transition-transform duration-500">
-                    <div className="flex items-center gap-3 mb-3 text-green-600">
-                      <Database className="w-6 h-6" />
-                      <span className="font-semibold text-sm">Clean_DB.sql</span>
-                    </div>
-                    <div className="space-y-2">
-                      <div className="h-2 bg-green-100 rounded w-full"></div>
-                      <div className="h-2 bg-green-100 rounded w-full"></div>
-                      <div className="h-2 bg-green-100 rounded w-3/4"></div>
-                    </div>
-                  </Card>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* --- TRUSTED BY --- */}
-        <section className="py-12 border-y bg-gray-50/50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p className="text-center text-sm font-semibold text-gray-500 tracking-wide uppercase mb-8">
-              Trusted by 100+ innovative data teams
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
-              {['Acme Corp', 'GlobalBank', 'TechStart', 'DataFlow', 'CloudScale'].map((company) => (
-                <div key={company} className="flex justify-center">
-                  <span className="text-xl font-bold text-gray-400">{company}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* --- HOW IT WORKS --- */}
-        <section className="py-24 bg-white relative">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Three steps to perfect data
-              </h2>
-              <p className="mt-4 text-lg text-gray-500">
-                Stop writing custom scripts. Let Morphix handle the heavy lifting.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
-              {/* Connecting Line (Desktop) */}
-              <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-gradient-to-r from-gray-200 via-primary/30 to-gray-200 -z-10" />
-
-              {[
-                {
-                  icon: Upload,
-                  title: "1. Upload Your Data",
-                  desc: "Drag and drop any file: Excel, CSV, JSON, or connect via API. We handle files up to 5GB."
-                },
-                {
-                  icon: SparkleIcon,
-                  title: "2. AI Transforms It",
-                  desc: "Our AI auto-detects schemas, fixes errors, and maps columns to your target destination instantly."
-                },
-                {
-                  icon: Database,
-                  title: "3. Export & Sync",
-                  desc: "Download clean files or sync directly to Salesforce, HubSpot, Postgres, or your Data Warehouse."
-                }
-              ].map((step, i) => (
-                <div key={i} className="flex flex-col items-center text-center group">
-                  <div className="w-24 h-24 rounded-2xl bg-white border shadow-xl flex items-center justify-center mb-6 group-hover:-translate-y-2 transition-transform duration-300">
-                    <step.icon className={`w-10 h-10 ${i === 1 ? 'text-primary' : 'text-gray-600'}`} />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{step.title}</h3>
-                  <p className="text-gray-500 leading-relaxed">{step.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* --- FEATURES --- */}
-        <section className="py-24 bg-gray-50 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl mb-6">
-                  Everything you need to <br /> transform data at scale
-                </h2>
-                <div className="space-y-8">
-                  {[
-                    {
-                      title: "AI-Powered Schema Detection",
-                      desc: "Automatically understands messy headers and structures, mapping them to your standardized schema with 99% accuracy.",
-                      icon: Zap
-                    },
-                    {
-                      title: "Smart Validations & Enrichment",
-                      desc: "Validate emails, phones, and addresses. Enrich data with external APIs automatically during the pipeline.",
-                      icon: Check
-                    },
-                    {
-                      title: "Enterprise Grade Security",
-                      desc: "SOC2 Type II compliant. End-to-end encryption. Your data is deleted after processing.",
-                      icon: Lock
-                    }
-                  ].map((feat, i) => (
-                    <div key={i} className="flex gap-4">
-                      <div className="mt-1 flex-shrink-0">
-                        <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                          <feat.icon className="h-6 w-6 text-primary" aria-hidden="true" />
-                        </div>
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-semibold text-gray-900">{feat.title}</h3>
-                        <p className="mt-2 text-gray-500">{feat.desc}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Feature Visual */}
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="relative"
-              >
-                <div className="absolute -inset-4 bg-gradient-to-r from-purple-500 to-orange-500 rounded-2xl opacity-10 blur-2xl"></div>
-                <div className="relative rounded-2xl bg-white border shadow-2xl overflow-hidden">
-                  <div className="bg-gray-50 border-b px-4 py-3 flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                  </div>
-                  <div className="p-6">
-                    <div className="space-y-4">
-                      <div className="flex justify-between items-center text-sm font-medium text-gray-500 mb-2">
-                        <span>Confidence Score</span>
-                        <span className="text-green-600">98.5%</span>
-                      </div>
-                      {/* Mock Schema Map */}
-                      {[
-                        { src: "Cust Name", dest: "full_name", status: "Matched" },
-                        { src: "E-mail Addr", dest: "email_address", status: "Matched" },
-                        { src: "Ph #", dest: "phone_number", status: "Formatted" },
-                        { src: "Joined", dest: "created_at", status: "Converted" },
-                      ].map((row, k) => (
-                        <div key={k} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border">
-                          <span className="text-gray-700 font-mono text-sm">{row.src}</span>
-                          <ArrowRight className="w-4 h-4 text-gray-400" />
-                          <span className="text-purple-600 font-mono text-sm">{row.dest}</span>
-                          <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">{row.status}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-
-        {/* --- STATS --- */}
-        <section className="bg-primary text-white py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-              {[
-                { val: "10M+", label: "Rows Processed" },
-                { val: "99.9%", label: "Accuracy Rate" },
-                { val: "50+", label: "File Formats" },
-                { val: "<10s", label: "Avg Transform Time" }
-              ].map((stat, i) => (
-                <div key={i}>
-                  <div className="text-4xl md:text-5xl font-bold mb-2">{stat.val}</div>
-                  <div className="text-purple-200 font-medium">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* --- CTA --- */}
-        <section className="py-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-white -z-10"></div>
-          <div className="max-w-4xl mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold tracking-tight text-gray-900 mb-6 font-display">
-              Ready to transform your data?
-            </h2>
-            <p className="text-xl text-gray-500 mb-10">
-              Get a personalized demo for your use case and see why leading data teams trust Morphix.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link href="/book-demo">
-                <Button size="lg" variant="gradient" className="w-full sm:w-auto text-lg px-8 h-14 shadow-xl shadow-purple-200">
-                  Book a Demo
-                </Button>
-              </Link>
-              <Link href="/pricing">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto text-lg px-8 h-14">
-                  View Pricing
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
-
-      </main>
-
-      <Footer />
-    </div>
-  )
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
 }
 
-function SparkleIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" className={className} stroke="currentColor" strokeWidth="2">
-      <path d="M12 2L14.4 7.2L20 9L14.4 10.8L12 16L9.6 10.8L4 9L9.6 7.2L12 2Z" fill="currentColor" fillOpacity="0.2" />
-    </svg>
-  )
+const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.1 }
+    }
+}
+
+export default function Home() {
+    return (
+        <div className="min-h-screen bg-background flex flex-col font-sans">
+            <Navbar />
+
+            <main className="flex-grow">
+                {/* --- HERO SECTION --- */}
+                <section className="relative min-h-[90vh] flex items-center overflow-hidden">
+                    {/* Background Pattern */}
+                    <div className="absolute inset-0 gradient-blue-light opacity-50" />
+                    <div 
+                        className="absolute inset-0 opacity-[0.03]"
+                        style={{
+                            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b5998' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                        }}
+                    />
+                    
+                    <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+                        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                            {/* Content */}
+                            <motion.div
+                                initial="hidden"
+                                animate="visible"
+                                variants={staggerContainer}
+                            >
+                                <motion.div variants={fadeInUp}>
+                                    <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 px-4 py-1.5">
+                                        <Award className="w-3.5 h-3.5 mr-2" />
+                                        Established 2019 | Plymouth, MN
+                                    </Badge>
+                                </motion.div>
+                                
+                                <motion.h1 
+                                    className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
+                                    variants={fadeInUp}
+                                >
+                                    USA&apos;s Top{" "}
+                                    <span className="text-gradient-blue">Food & Dairy</span>
+                                    {" "}Solutions Partner
+                                </motion.h1>
+                                
+                                <motion.p 
+                                    className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl"
+                                    variants={fadeInUp}
+                                >
+                                    Expert guidance on dairy processing, food safety compliance, 
+                                    product development, and operational excellence. Transform your 
+                                    business with industry-leading consulting.
+                                </motion.p>
+                                
+                                <motion.div 
+                                    className="flex flex-col sm:flex-row gap-4"
+                                    variants={fadeInUp}
+                                >
+                                    <Link href="/contact">
+                                        <Button size="lg" className="gradient-blue text-white hover:opacity-90 shadow-lg hover:shadow-xl transition-all h-14 px-8 text-base">
+                                            Get Free Consultation
+                                            <ArrowRight className="ml-2 w-5 h-5" />
+                                        </Button>
+                                    </Link>
+                                    <Link href="/services">
+                                        <Button size="lg" variant="outline" className="border-2 h-14 px-8 text-base hover:bg-secondary">
+                                            Explore Services
+                                        </Button>
+                                    </Link>
+                                </motion.div>
+
+                                {/* Quick Contact */}
+                                <motion.div 
+                                    className="mt-10 flex items-center gap-4 text-muted-foreground"
+                                    variants={fadeInUp}
+                                >
+                                    <div className="flex items-center gap-2">
+                                        <Phone className="w-5 h-5 text-primary" />
+                                        <span className="font-medium">+1-605-690-6080</span>
+                                    </div>
+                                </motion.div>
+                            </motion.div>
+
+                            {/* Hero Visual */}
+                            <motion.div
+                                className="relative hidden lg:block"
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 0.8, delay: 0.3 }}
+                            >
+                                <div className="relative">
+                                    {/* Main Card */}
+                                    <div className="bg-white rounded-3xl shadow-2xl p-8 border border-border/50">
+                                        <div className="flex items-center gap-4 mb-6">
+                                            <div className="w-16 h-16 rounded-2xl gradient-blue flex items-center justify-center">
+                                                <Factory className="w-8 h-8 text-white" />
+                                            </div>
+                                            <div>
+                                                <h3 className="font-bold text-xl">US Dairy & Foods</h3>
+                                                <p className="text-muted-foreground text-sm">Consulting LLC</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="space-y-4">
+                                            {["Dairy Processing Excellence", "Food Safety Compliance", "Product Innovation"].map((item, i) => (
+                                                <div key={i} className="flex items-center gap-3 p-3 bg-secondary/50 rounded-xl">
+                                                    <CheckCircle2 className="w-5 h-5 text-primary" />
+                                                    <span className="font-medium text-sm">{item}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+
+                                        <div className="mt-6 pt-6 border-t border-border">
+                                            <p className="text-xs text-muted-foreground">Founded by</p>
+                                            <p className="font-semibold">Dr. Hasmukh Patel</p>
+                                        </div>
+                                    </div>
+
+                                    {/* Floating Elements */}
+                                    <motion.div 
+                                        className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-lg p-4 border"
+                                        animate={{ y: [0, -10, 0] }}
+                                        transition={{ duration: 3, repeat: Infinity }}
+                                    >
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                                                <TrendingUp className="w-5 h-5 text-green-600" />
+                                            </div>
+                                            <div>
+                                                <p className="text-xs text-muted-foreground">Projects</p>
+                                                <p className="font-bold">100+</p>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+
+                                    <motion.div 
+                                        className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-lg p-4 border"
+                                        animate={{ y: [0, 10, 0] }}
+                                        transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
+                                    >
+                                        <div className="flex items-center gap-2">
+                                            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                                                <Users className="w-5 h-5 text-primary" />
+                                            </div>
+                                            <div>
+                                                <p className="text-xs text-muted-foreground">Clients</p>
+                                                <p className="font-bold">50+</p>
+                                            </div>
+                                        </div>
+                                    </motion.div>
+                                </div>
+                            </motion.div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- TRUSTED BY --- */}
+                <section className="py-12 border-y bg-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <p className="text-center text-sm font-semibold text-muted-foreground tracking-wide uppercase mb-8">
+                            Trusted by Industry Leaders
+                        </p>
+                        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                            {collaborators.map((company, i) => (
+                                <motion.div
+                                    key={company}
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 0.6 }}
+                                    whileHover={{ opacity: 1, scale: 1.05 }}
+                                    transition={{ delay: i * 0.1 }}
+                                    viewport={{ once: true }}
+                                    className="transition-all"
+                                >
+                                    <span className="text-xl md:text-2xl font-bold text-muted-foreground/60 hover:text-primary transition-colors whitespace-nowrap">
+                                        {company}
+                                    </span>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- FOCUS RAIL SHOWCASE --- */}
+                <section className="py-16 bg-gradient-to-b from-slate-50 to-white">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
+                        <motion.div
+                            className="text-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">Our Expertise</Badge>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                                Explore Our <span className="text-gradient-blue">Capabilities</span>
+                            </h2>
+                            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                                Discover how we transform dairy and food operations with cutting-edge solutions.
+                            </p>
+                        </motion.div>
+                    </div>
+                    <FocusRail 
+                        items={focusRailItems} 
+                        autoPlay={true}
+                        interval={5000}
+                        loop={true}
+                        theme="light"
+                    />
+                </section>
+
+                {/* --- CORE VALUES --- */}
+                <section className="py-24 bg-background">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <motion.div
+                            className="text-center mb-16"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <Badge className="mb-4 bg-secondary text-primary border-0">Our Foundation</Badge>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                                Built on Strong <span className="text-gradient-blue">Values</span>
+                            </h2>
+                            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                                Our core values drive everything we do, ensuring exceptional results for every client.
+                            </p>
+                        </motion.div>
+
+                        <div className="grid md:grid-cols-3 gap-8">
+                            {coreValues.map((value, i) => (
+                                <motion.div
+                                    key={value.title}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                >
+                                    <Card className="p-8 h-full hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/20 group">
+                                        <div className="w-14 h-14 rounded-2xl gradient-blue flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                            <value.icon className="w-7 h-7 text-white" />
+                                        </div>
+                                        <h3 className="text-xl font-bold mb-3">{value.title}</h3>
+                                        <p className="text-muted-foreground leading-relaxed">{value.description}</p>
+                                    </Card>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- SERVICES PREVIEW --- */}
+                <section className="py-24 bg-secondary/30">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <motion.div
+                            className="text-center mb-16"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <Badge className="mb-4 bg-primary/10 text-primary border-primary/20">What We Offer</Badge>
+                            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                                Comprehensive <span className="text-gradient-blue">Consulting Services</span>
+                            </h2>
+                            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                                Tailored solutions to meet the unique needs of the dairy and food industry.
+                            </p>
+                        </motion.div>
+
+                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            {services.map((service, i) => (
+                                <motion.div
+                                    key={service.title}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                >
+                                    <Link href={service.href}>
+                                        <Card className="p-6 h-full hover:shadow-xl transition-all duration-300 border-border/50 hover:border-primary/30 group cursor-pointer bg-white">
+                                            <div className="flex items-start gap-4">
+                                                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary group-hover:text-white transition-colors">
+                                                    <service.icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                                                </div>
+                                                <div className="flex-1">
+                                                    <h3 className="font-bold mb-2 group-hover:text-primary transition-colors flex items-center gap-2">
+                                                        {service.title}
+                                                        <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                    </h3>
+                                                    <p className="text-sm text-muted-foreground">{service.description}</p>
+                                                </div>
+                                            </div>
+                                        </Card>
+                                    </Link>
+                                </motion.div>
+                            ))}
+                        </div>
+
+                        <motion.div
+                            className="text-center mt-12"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                        >
+                            <Link href="/services">
+                                <Button size="lg" variant="outline" className="border-2">
+                                    View All Services
+                                    <ArrowRight className="ml-2 w-4 h-4" />
+                                </Button>
+                            </Link>
+                        </motion.div>
+                    </div>
+                </section>
+
+                {/* --- STATS --- */}
+                <section className="gradient-blue text-white py-20 relative overflow-hidden">
+                    <div 
+                        className="absolute inset-0 opacity-10"
+                        style={{
+                            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                        }}
+                    />
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                            {stats.map((stat, i) => (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: i * 0.1 }}
+                                    className="group"
+                                >
+                                    <div className="text-4xl md:text-5xl font-bold mb-2 group-hover:scale-110 transition-transform">
+                                        {stat.value}
+                                    </div>
+                                    <div className="text-blue-200 font-medium">{stat.label}</div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* --- TESTIMONIALS --- */}
+                <TestimonialsSection
+                    title="What Our Clients Say"
+                    description="Hear from industry leaders who have transformed their businesses with USDF consulting."
+                    testimonials={testimonials}
+                />
+
+                {/* --- CTA --- */}
+                <section className="py-24 relative overflow-hidden">
+                    <div className="absolute inset-0 gradient-blue-light" />
+                    <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                            <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 px-4 py-1.5">
+                                <Award className="w-3.5 h-3.5 mr-2" />
+                                Unlock Your Business Potential
+                            </Badge>
+                            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+                                Ready to Transform Your <span className="text-gradient-blue">Business?</span>
+                            </h2>
+                            <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
+                                Join the successful businesses that trust USDF for their dairy and food consulting needs. 
+                                Let&apos;s discuss how we can help you achieve excellence.
+                            </p>
+                            <div className="flex flex-col sm:flex-row justify-center gap-4">
+                                <Link href="/contact">
+                                    <Button size="lg" className="gradient-blue text-white hover:opacity-90 shadow-xl hover:shadow-2xl transition-all h-14 px-10 text-lg">
+                                        Schedule a Consultation
+                                        <ArrowRight className="ml-2 w-5 h-5" />
+                                    </Button>
+                                </Link>
+                                <Link href="/about">
+                                    <Button size="lg" variant="outline" className="h-14 px-10 text-lg border-2">
+                                        Learn About Us
+                                    </Button>
+                                </Link>
+                            </div>
+                        </motion.div>
+                    </div>
+                </section>
+            </main>
+
+            <Footer />
+        </div>
+    )
 }

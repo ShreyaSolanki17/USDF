@@ -28,10 +28,11 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Brand Colors */
-  --color-brand-purple: #7C3AED;
-  --color-brand-orange: #F97316;
-  --color-brand-green: #10B981;
+  /* Brand Colors - USDF Blue Theme */
+  --color-brand-primary: #3b5998;
+  --color-brand-navy: #1e3a5f;
+  --color-brand-sky: #0ea5e9;
+  --color-brand-light: #e8f0fe;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -43,111 +44,120 @@
     50% { transform: translateY(-10px); }
   }
 
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 20px rgba(59, 89, 152, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(59, 89, 152, 0.6); }
+  }
+
   --font-serif: "Instrument Serif", Georgia, serif;
 
   --radius: var(----radius);
 
   --color-text-400: var(----text-400);
-
   --color-text-300: var(----text-300);
-
   --color-text-200: var(----text-200);
-
   --color-text-100: var(----text-100);
-
   --color-bg-300: var(----bg-300);
-
   --color-bg-200: var(----bg-200);
-
   --color-bg-100: var(----bg-100);
+  --color-bg-0: var(----bg-0);
 
-  --color-bg-0: var(----bg-0)
-;
   @keyframes fadeSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);}
-  to {
-    opacity: 1;
-    transform: translateY(0);}}}
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
 
 :root {
   /* Base */
   --background: #FFFFFF;
-  --foreground: #18181B; /* Gray 900 */
+  --foreground: #1e3a5f; /* Navy for text */
 
-  /* Primary - Purple 500 */
-  --primary: #7C3AED;
+  /* Primary - Slate Blue */
+  --primary: #3b5998;
   --primary-foreground: #FFFFFF;
 
-  /* Secondary - Purple 100 */
-  --secondary: #F3E8FF;
-  --secondary-foreground: #5B21B6; /* Purple 700 */
+  /* Secondary - Light Blue */
+  --secondary: #e8f0fe;
+  --secondary-foreground: #1e3a5f;
 
-  /* Accent - Orange 500 */
-  --accent: #F97316;
+  /* Accent - Sky Blue */
+  --accent: #0ea5e9;
   --accent-foreground: #FFFFFF;
 
-  /* Muted - Gray 100 */
-  --muted: #F4F4F5;
-  --muted-foreground: #71717A; /* Gray 500 */
+  /* Muted - Light Gray Blue */
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
 
-  /* Destructive - Red 500 */
+  /* Destructive - Red */
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
 
   /* UI Elements */
   --card: #FFFFFF;
-  --card-foreground: #18181B;
+  --card-foreground: #1e3a5f;
   --popover: #FFFFFF;
-  --popover-foreground: #18181B;
-  --border: #E4E4E7; /* Gray 200 */
-  --input: #E4E4E7;
-  --ring: #7C3AED; /* Purple 500 */
+  --popover-foreground: #1e3a5f;
+  --border: #cbd5e1;
+  --input: #cbd5e1;
+  --ring: #3b5998;
 
   --radius: 0.5rem;
 
   --font-sans: 'Poppins', 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  --bg-0: #09090b;
-  --bg-100: #18181b;
-  --bg-200: #27272a;
-  --bg-300: #3f3f46;
-  --text-100: #fafafa;
-  --text-200: #e4e4e7;
-  --text-300: #a1a1aa;
-  --text-400: #71717a;
+  
+  /* Legacy vars */
+  --bg-0: #0f172a;
+  --bg-100: #1e293b;
+  --bg-200: #334155;
+  --bg-300: #475569;
+  --text-100: #f8fafc;
+  --text-200: #e2e8f0;
+  --text-300: #94a3b8;
+  --text-400: #64748b;
 }
 
 .dark {
   /* Base */
-  --background: #09090B; /* Gray 950 */
-  --foreground: #FAFAFA; /* Gray 50 */
+  --background: #0f172a;
+  --foreground: #f8fafc;
 
-  /* Primary */
-  --primary: #8B5CF6; /* Purple 500 slightly lighter for dark mode if needed, kept generic for now or adjusted */
+  /* Primary - Lighter Slate Blue for dark mode */
+  --primary: #5b7fc4;
   --primary-foreground: #FFFFFF;
 
-  /* Secondary */
-  --secondary: #2E1065; /* Purple 950 */
-  --secondary-foreground: #E9D5FF; /* Purple 200 */
+  /* Secondary - Dark Blue */
+  --secondary: #1e3a5f;
+  --secondary-foreground: #e8f0fe;
 
-  /* Accent */
-  --accent: #EA580C; /* Orange 600 */
-  --accent-foreground: #FFFFFF;
+  /* Accent - Bright Sky Blue */
+  --accent: #38bdf8;
+  --accent-foreground: #0f172a;
 
   /* Muted */
-  --muted: #27272A; /* Gray 800 */
-  --muted-foreground: #A1A1AA; /* Gray 400 */
+  --muted: #1e293b;
+  --muted-foreground: #94a3b8;
 
   /* UI Elements */
-  --card: #18181B; /* Gray 900 */
-  --card-foreground: #FAFAFA;
-  --popover: #18181B;
-  --popover-foreground: #FAFAFA;
-  --border: #27272A; /* Gray 800 */
-  --input: #27272A;
-  --ring: #8B5CF6;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --popover: #1e293b;
+  --popover-foreground: #f8fafc;
+  --border: #334155;
+  --input: #334155;
+  --ring: #5b7fc4;
 }
 
 @layer base {
@@ -157,4 +167,29 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom utility classes for USDF */
+.gradient-blue {
+  background: linear-gradient(135deg, #3b5998 0%, #1e3a5f 100%);
+}
+
+.gradient-blue-light {
+  background: linear-gradient(135deg, #e8f0fe 0%, #dbeafe 100%);
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #3b5998 0%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite linear;
+  background-size: 200% 100%;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
 }

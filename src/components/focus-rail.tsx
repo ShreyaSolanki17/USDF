@@ -22,6 +22,7 @@ interface FocusRailProps {
   autoPlay?: boolean;
   interval?: number;
   className?: string;
+  theme?: "light" | "dark";
 }
 
 /**
@@ -37,7 +38,7 @@ function wrap(min: number, max: number, v: number) {
  * Base spring for spatial movement (x/z)
  */
 const BASE_SPRING = {
-  type: "spring",
+  type: "spring" as const,
   stiffness: 300,
   damping: 30,
   mass: 1,
@@ -61,7 +62,9 @@ export function FocusRail({
   autoPlay = false,
   interval = 4000,
   className,
+  theme = "light",
 }: FocusRailProps) {
+  const isDark = theme === "dark";
   const [active, setActive] = React.useState(initialIndex);
   const [isHovering, setIsHovering] = React.useState(false);
   const lastWheelTime = React.useRef<number>(0);
@@ -139,7 +142,8 @@ export function FocusRail({
   return (
     <div
       className={cn(
-        "group relative flex h-[600px] w-full flex-col overflow-hidden bg-neutral-950 text-white outline-none select-none overflow-x-hidden",
+        "group relative flex h-[600px] w-full flex-col overflow-hidden outline-none select-none overflow-x-hidden",
+        isDark ? "bg-neutral-950 text-white" : "bg-gradient-to-b from-slate-50 to-white text-foreground",
         className
       )}
       onMouseEnter={() => setIsHovering(true)}
@@ -154,7 +158,7 @@ export function FocusRail({
           <motion.div
             key={`bg-${activeItem.id}`}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.4 }}
+            animate={{ opacity: isDark ? 0.4 : 0.15 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="absolute inset-0"
@@ -162,9 +166,17 @@ export function FocusRail({
             <img
               src={activeItem.imageSrc}
               alt=""
-              className="h-full w-full object-cover blur-3xl saturate-200"
+              className={cn(
+                "h-full w-full object-cover blur-3xl",
+                isDark ? "saturate-200" : "saturate-150"
+              )}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/50 to-transparent" />
+            <div className={cn(
+              "absolute inset-0 bg-gradient-to-t",
+              isDark 
+                ? "from-neutral-950 via-neutral-950/50 to-transparent" 
+                : "from-white via-white/70 to-transparent"
+            )} />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -203,8 +215,13 @@ export function FocusRail({
               <motion.div
                 key={absIndex}
                 className={cn(
-                  "absolute aspect-[3/4] w-[260px] md:w-[300px] rounded-2xl border-t border-white/20 bg-neutral-900 shadow-2xl transition-shadow duration-300",
-                  isCenter ? "z-20 shadow-white/10" : "z-10"
+                  "absolute aspect-[3/4] w-[260px] md:w-[300px] rounded-2xl shadow-2xl transition-shadow duration-300",
+                  isDark 
+                    ? "border-t border-white/20 bg-neutral-900" 
+                    : "border border-black/10 bg-white",
+                  isCenter 
+                    ? isDark ? "z-20 shadow-white/10" : "z-20 shadow-primary/20" 
+                    : "z-10"
                 )}
                 initial={false}
                 animate={{
@@ -215,11 +232,7 @@ export function FocusRail({
                   opacity: opacity,
                   filter: `blur(${blur}px) brightness(${brightness})`,
                 }}
-                transition={(val) => {
-                    // Use bouncier spring for scale to create the "Tap" effect
-                    if (val === "scale") return TAP_SPRING;
-                    return BASE_SPRING;
-                }}
+                transition={BASE_SPRING}
                 style={{
                   transformStyle: "preserve-3d",
                 }}
@@ -254,15 +267,24 @@ export function FocusRail({
                 className="space-y-2"
               >
                 {activeItem.meta && (
-                  <span className="text-xs font-medium uppercase tracking-wider text-emerald-400">
+                  <span className={cn(
+                    "text-xs font-medium uppercase tracking-wider",
+                    isDark ? "text-emerald-400" : "text-primary"
+                  )}>
                     {activeItem.meta}
                   </span>
                 )}
-                <h2 className="text-3xl font-bold tracking-tight md:text-4xl text-white">
+                <h2 className={cn(
+                  "text-3xl font-bold tracking-tight md:text-4xl",
+                  isDark ? "text-white" : "text-foreground"
+                )}>
                   {activeItem.title}
                 </h2>
                 {activeItem.description && (
-                  <p className="max-w-md text-neutral-400">
+                  <p className={cn(
+                    "max-w-md",
+                    isDark ? "text-neutral-400" : "text-muted-foreground"
+                  )}>
                     {activeItem.description}
                   </p>
                 )}
@@ -271,20 +293,38 @@ export function FocusRail({
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="flex items-center gap-1 rounded-full bg-neutral-900/80 p-1 ring-1 ring-white/10 backdrop-blur-md">
+            <div className={cn(
+              "flex items-center gap-1 rounded-full p-1 backdrop-blur-md",
+              isDark 
+                ? "bg-neutral-900/80 ring-1 ring-white/10" 
+                : "bg-white/80 ring-1 ring-black/10 shadow-lg"
+            )}>
               <button
                 onClick={handlePrev}
-                className="rounded-full p-3 text-neutral-400 transition hover:bg-white/10 hover:text-white active:scale-95"
+                className={cn(
+                  "rounded-full p-3 transition active:scale-95",
+                  isDark 
+                    ? "text-neutral-400 hover:bg-white/10 hover:text-white" 
+                    : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                )}
                 aria-label="Previous"
               >
                 <ChevronLeft className="h-5 w-5" />
               </button>
-              <span className="min-w-[40px] text-center text-xs font-mono text-neutral-500">
+              <span className={cn(
+                "min-w-[40px] text-center text-xs font-mono",
+                isDark ? "text-neutral-500" : "text-muted-foreground"
+              )}>
                 {activeIndex + 1} / {count}
               </span>
               <button
                 onClick={handleNext}
-                className="rounded-full p-3 text-neutral-400 transition hover:bg-white/10 hover:text-white active:scale-95"
+                className={cn(
+                  "rounded-full p-3 transition active:scale-95",
+                  isDark 
+                    ? "text-neutral-400 hover:bg-white/10 hover:text-white" 
+                    : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                )}
                 aria-label="Next"
               >
                 <ChevronRight className="h-5 w-5" />
@@ -294,7 +334,12 @@ export function FocusRail({
             {activeItem.href && (
               <Link
                 href={activeItem.href}
-                className="group flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-black transition-transform hover:scale-105 active:scale-95"
+                className={cn(
+                  "group flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:scale-105 active:scale-95",
+                  isDark 
+                    ? "bg-white text-black" 
+                    : "bg-primary text-white shadow-lg hover:shadow-xl"
+                )}
               >
                 Explore
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
