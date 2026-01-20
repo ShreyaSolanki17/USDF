@@ -1,4 +1,73 @@
-# Frontend Template Agent Guide
+# Project Context: US Dairy & Foods Consulting (USDF)
+
+## Company Overview
+**US Dairy and Foods Consulting LLC** (USDF) is a premier consultancy specializing in dairy and food industry solutions. Founded in 2019 by **Dr. Hasmukh Patel**, the firm is based in Plymouth, MN, and provides expert guidance on dairy processing, food safety compliance, product development, and operational efficiency.
+
+**Tagline:** "USA’s Top Food & Dairy Solutions Partner for Business Expansion."
+
+## Core Values & Identity
+- **Experience:** Bringing extensive industry experience to enhance performance and growth.
+- **Expertise:** Leveraging diverse expertise to meet unique needs.
+- **Excellence:** Implementing advanced solutions for superior manufacturing processes.
+
+### Vision
+To be the leading consulting firm that empowers dairy and food businesses with cutting-edge solutions, fostering innovation, sustainability, and excellence in the industry.
+
+### Mission
+We strive to deliver strategic insights and customized solutions that enhance food safety, quality, and efficiency, ensuring long-term success for our clients in the ever-evolving food and dairy sector.
+
+## Site Architecture & Content
+
+### 1. Home
+- **Hero Section:** Introduction to USDF, emphasizing innovation and quality.
+- **Key Sections:** Experience, Expertise, Excellence.
+- **Call to Action:** "Unlock Your Business" - Join successful businesses trusting USDF.
+
+### 2. About Us
+- **Founder:** Dr. Hasmukh Patel.
+- **Focus:** Optimization, compliance, sustainable growth.
+- **Philosophy:** "Our Strength, Our Teamwork" - Seamless collaboration driving excellence.
+
+### 3. Services
+Comprehensive consulting services tailored to the dairy and food industry:
+- **Strategic Planning:** Market analysis, regulatory requirements, operational optimization.
+- **Technology Assessment:** System evaluation, automation, advanced processing techniques.
+- **Dairy and Food Ingredients Manufacturing:** Sourcing, formulation, cost optimization.
+- **Research & Development (R&D):** New product development, nutritional enhancement, consumer insights.
+- **Product Development & Commercialization:** Concept validation to large-scale production.
+- **Turn-Key Projects:** End-to-end support (facility design, equipment, workflow).
+- **Technical Support:** Troubleshooting, process optimization, quality assurance.
+
+### 4. Industry Sectors
+- **Food and Beverage Industry:** Process optimization, safety standards.
+- **FMCG (Fast-Moving Consumer Goods):** Supply chain, speed, efficiency.
+- **Dairy Products & Dairy Ingredients:** Quality assurance, sustainability, cheese/milk/ingredient manufacturing.
+- **Food Products & Food Ingredients:** Clean-label, plant-based, functional ingredients.
+- **New Processing Technologies:** High-pressure processing (HPP), automation, sustainable packaging.
+
+### 5. Collaborators (Clients & Partners)
+- General Mills
+- Paras/VRS Foods
+- Vadilal Ice Cream
+- Amul
+- Flavi Dairy Solutions
+
+### 6. Contact Us
+**Contact Details:**
+- **Phone:** +1-605-690-6080
+- **Email:** usdfconsulting@gmail.com
+- **Address:** 5605 Weston Ln N, Plymouth, MN 55446, USA
+
+**Inquiry Form:**
+- Fields: Your Name, Your Email, Phone Number, Subject, Your Message.
+
+## Footer Information
+- **Quick Links:** About Us, Services, Industry, Collaborator, Contact Us.
+- **Copyright:** "Copyright 2025 US Dairy & Foods. All Rights Received. Developed by Triovate PVT LTD"
+
+---
+
+# Frontend Template Agent Guide (Technical Reference)
 
 This repository is a reusable Next.js 16 template that pairs Tailwind CSS v4 with shadcn/ui primitives and a curated collection of animation-heavy components imported from 21st.dev.
 
@@ -64,10 +133,3 @@ Use `ui/` for low-level reusable pieces and `devComponents/` for opinionated sec
 - **Documentation:** Update this `agent.md` whenever you add notable tooling or conventions. Keep `README.md` user-facing, while this file stays implementation-focused.
 - **Component Hygiene:** When pulling additional 21st.dev entries, confirm TypeScript types and tweak effects (e.g., `use client` directives, motion easing) to satisfy ESLint/TypeScript.
 - **Testing:** After major component imports, run `npm run build` to catch type or bundler issues early (especially when WebGL / three.js pieces are involved).
-- **Future Enhancements to Consider:**
-  - Add a component gallery (Storybook or Ladle) to preview both `ui/` and `devComponents/`.
-  - Set up automated linting (`next lint`, `tsc --noEmit`) and formatting scripts.
-  - Extract theme tokens to a dedicated `tokens.ts` or JSON if you plan to sync with design tools.
-
-With these conventions, you can rapidly scaffold visually rich landing pages while keeping a reliable baseline for future client projects.
-
