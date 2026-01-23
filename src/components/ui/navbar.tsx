@@ -1,8 +1,9 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
-import { Menu, X, Milk } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -24,8 +25,14 @@ export function Navbar() {
                 <div className="flex justify-between h-20">
                     <div className="flex items-center">
                         <Link href="/" className="flex-shrink-0 flex items-center gap-3 group">
-                            <div className="w-12 h-12 rounded-xl gradient-blue flex items-center justify-center text-white font-bold shadow-lg group-hover:shadow-xl transition-shadow">
-                                <Milk className="w-7 h-7" />
+                            <div className="relative w-20 h-20 flex-shrink-0">
+                                <Image
+                                    src="/Images/usdf-logo.png"
+                                    alt="USDF Logo"
+                                    fill
+                                    className="object-contain"
+                                    priority
+                                />
                             </div>
                             <div className="flex flex-col">
                                 <span className="font-bold text-xl tracking-tight text-primary">USDF</span>
@@ -50,8 +57,8 @@ export function Navbar() {
                     </div>
                     <div className="hidden lg:flex items-center space-x-4">
                         <Link href="/contact">
-                            <Button 
-                                variant="default" 
+                            <Button
+                                variant="default"
                                 className="gradient-blue hover:opacity-90 text-white shadow-lg hover:shadow-xl transition-all"
                             >
                                 Get Consultation

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Award, Users, Target, Lightbulb, Shield, Beaker, Factory, Wrench, TrendingUp, CheckCircle2, Phone, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/ui/navbar"
@@ -14,11 +15,11 @@ import { FocusRail, FocusRailItem } from "@/components/focus-rail"
 
 // Collaborator logos
 const collaborators = [
-    "General Mills",
-    "Amul",
-    "Vadilal Ice Cream",
-    "Paras/VRS Foods",
-    "Flavi Dairy Solutions"
+    { name: "General Mills", logo: "/logos/general-mills.jpg" },
+    { name: "Amul", logo: "/logos/amul.jpg" },
+    { name: "Vadilal Ice Cream", logo: "/logos/vadilal.jpg" },
+    { name: "Paras/VRS Foods", logo: "/logos/paras.jpg" },
+    { name: "Flavi Dairy Solutions", logo: "/logos/flavi-dairy.jpg" }
 ]
 
 // Core values
@@ -200,13 +201,13 @@ export default function Home() {
                 <section className="relative min-h-[90vh] flex items-center overflow-hidden">
                     {/* Background Pattern */}
                     <div className="absolute inset-0 gradient-blue-light opacity-50" />
-                    <div 
+                    <div
                         className="absolute inset-0 opacity-[0.03]"
                         style={{
                             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%233b5998' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
                         }}
                     />
-                    
+
                     <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
                         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                             {/* Content */}
@@ -221,8 +222,8 @@ export default function Home() {
                                         Established 2019 | Plymouth, MN
                                     </Badge>
                                 </motion.div>
-                                
-                                <motion.h1 
+
+                                <motion.h1
                                     className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
                                     variants={fadeInUp}
                                 >
@@ -230,44 +231,40 @@ export default function Home() {
                                     <span className="text-gradient-blue">Food & Dairy</span>
                                     {" "}Solutions Partner
                                 </motion.h1>
-                                
-                                <motion.p 
+
+                                <motion.p
                                     className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl"
                                     variants={fadeInUp}
                                 >
-                                    Expert guidance on dairy processing, food safety compliance, 
-                                    product development, and operational excellence. Transform your 
+                                    Expert guidance on dairy processing,
+                                    product development, operational excellence, strategy and growth. Transform your
                                     business with industry-leading consulting.
                                 </motion.p>
-                                
-                                <motion.div 
+
+                                <motion.div
                                     className="flex flex-col sm:flex-row gap-4"
                                     variants={fadeInUp}
                                 >
-                                    <Link href="/contact">
+                                    <a
+                                        href="mailto:hpatel@usdf.com"
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            window.location.href = 'mailto:hpatel@usdf.com';
+                                        }}
+                                    >
                                         <Button size="lg" className="gradient-blue text-white hover:opacity-90 shadow-lg hover:shadow-xl transition-all h-14 px-8 text-base">
-                                            Get Free Consultation
+                                            Contact Now
                                             <ArrowRight className="ml-2 w-5 h-5" />
                                         </Button>
-                                    </Link>
+                                    </a>
                                     <Link href="/services">
                                         <Button size="lg" variant="outline" className="border-2 h-14 px-8 text-base hover:bg-secondary">
                                             Explore Services
                                         </Button>
                                     </Link>
                                 </motion.div>
-
-                                {/* Quick Contact */}
-                                <motion.div 
-                                    className="mt-10 flex items-center gap-4 text-muted-foreground"
-                                    variants={fadeInUp}
-                                >
-                                    <div className="flex items-center gap-2">
-                                        <Phone className="w-5 h-5 text-primary" />
-                                        <span className="font-medium">+1-605-690-6080</span>
-                                    </div>
-                                </motion.div>
                             </motion.div>
+
 
                             {/* Hero Visual */}
                             <motion.div
@@ -276,67 +273,53 @@ export default function Home() {
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.8, delay: 0.3 }}
                             >
-                                <div className="relative">
-                                    {/* Main Card */}
-                                    <div className="bg-white rounded-3xl shadow-2xl p-8 border border-border/50">
-                                        <div className="flex items-center gap-4 mb-6">
-                                            <div className="w-16 h-16 rounded-2xl gradient-blue flex items-center justify-center">
-                                                <Factory className="w-8 h-8 text-white" />
-                                            </div>
-                                            <div>
-                                                <h3 className="font-bold text-xl">US Dairy & Foods</h3>
-                                                <p className="text-muted-foreground text-sm">Consulting LLC</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div className="space-y-4">
-                                            {["Dairy Processing Excellence", "Food Safety Compliance", "Product Innovation"].map((item, i) => (
-                                                <div key={i} className="flex items-center gap-3 p-3 bg-secondary/50 rounded-xl">
-                                                    <CheckCircle2 className="w-5 h-5 text-primary" />
-                                                    <span className="font-medium text-sm">{item}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-
-                                        <div className="mt-6 pt-6 border-t border-border">
-                                            <p className="text-xs text-muted-foreground">Founded by</p>
-                                            <p className="font-semibold">Dr. Hasmukh Patel</p>
-                                        </div>
-                                    </div>
-
-                                    {/* Floating Elements */}
-                                    <motion.div 
-                                        className="absolute -top-6 -right-6 bg-white rounded-2xl shadow-lg p-4 border"
-                                        animate={{ y: [0, -10, 0] }}
-                                        transition={{ duration: 3, repeat: Infinity }}
-                                    >
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
-                                                <TrendingUp className="w-5 h-5 text-green-600" />
-                                            </div>
-                                            <div>
-                                                <p className="text-xs text-muted-foreground">Projects</p>
-                                                <p className="font-bold">100+</p>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-
-                                    <motion.div 
-                                        className="absolute -bottom-4 -left-4 bg-white rounded-2xl shadow-lg p-4 border"
-                                        animate={{ y: [0, 10, 0] }}
-                                        transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
-                                    >
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                                                <Users className="w-5 h-5 text-primary" />
-                                            </div>
-                                            <div>
-                                                <p className="text-xs text-muted-foreground">Clients</p>
-                                                <p className="font-bold">50+</p>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                </div>
+                                <motion.div
+                                    className="relative rounded-3xl overflow-hidden shadow-2xl"
+                                    animate={{
+                                        y: [0, -15, 0],
+                                        scale: [1, 1.02, 1]
+                                    }}
+                                    transition={{
+                                        duration: 5,
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }}
+                                >
+                                    {/* Animated gradient overlays */}
+                                    <motion.div
+                                        className="absolute inset-0 bg-gradient-to-tr from-blue-500/30 to-cyan-500/30"
+                                        animate={{
+                                            opacity: [0.3, 0.6, 0.3]
+                                        }}
+                                        transition={{
+                                            duration: 3,
+                                            repeat: Infinity,
+                                            ease: "easeInOut"
+                                        }}
+                                    />
+                                    <Image
+                                        src="/Images/hero-three-services.png"
+                                        alt="Dairy Processing Excellence, Food Safety Compliance, and Product Innovation services"
+                                        width={600}
+                                        height={600}
+                                        className="object-cover w-full h-auto relative z-10"
+                                        priority
+                                    />
+                                    {/* Shimmer effect */}
+                                    <motion.div
+                                        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                                        animate={{
+                                            x: ['-100%', '200%']
+                                        }}
+                                        transition={{
+                                            duration: 3,
+                                            repeat: Infinity,
+                                            ease: "linear",
+                                            repeatDelay: 2
+                                        }}
+                                    />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-white/10 pointer-events-none" />
+                                </motion.div>
                             </motion.div>
                         </div>
                     </div>
@@ -348,20 +331,28 @@ export default function Home() {
                         <p className="text-center text-sm font-semibold text-muted-foreground tracking-wide uppercase mb-8">
                             Trusted by Industry Leaders
                         </p>
-                        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+                        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
                             {collaborators.map((company, i) => (
                                 <motion.div
-                                    key={company}
+                                    key={company.name}
                                     initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 0.6 }}
+                                    whileInView={{ opacity: 0.7 }}
                                     whileHover={{ opacity: 1, scale: 1.05 }}
                                     transition={{ delay: i * 0.1 }}
                                     viewport={{ once: true }}
-                                    className="transition-all"
+                                    className="transition-all flex flex-col items-center gap-3"
                                 >
-                                    <span className="text-xl md:text-2xl font-bold text-muted-foreground/60 hover:text-primary transition-colors whitespace-nowrap">
-                                        {company}
-                                    </span>
+                                    <div className="relative h-16 w-32 md:h-20 md:w-40 transition-all">
+                                        <Image
+                                            src={company.logo}
+                                            alt={`${company.name} logo`}
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
+                                    <p className="text-sm md:text-base font-semibold text-muted-foreground/70 text-center">
+                                        {company.name}
+                                    </p>
                                 </motion.div>
                             ))}
                         </div>
@@ -386,8 +377,8 @@ export default function Home() {
                             </p>
                         </motion.div>
                     </div>
-                    <FocusRail 
-                        items={focusRailItems} 
+                    <FocusRail
+                        items={focusRailItems}
                         autoPlay={true}
                         interval={5000}
                         loop={true}
@@ -500,7 +491,7 @@ export default function Home() {
 
                 {/* --- STATS --- */}
                 <section className="gradient-blue text-white py-20 relative overflow-hidden">
-                    <div 
+                    <div
                         className="absolute inset-0 opacity-10"
                         style={{
                             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
@@ -551,7 +542,7 @@ export default function Home() {
                                 Ready to Transform Your <span className="text-gradient-blue">Business?</span>
                             </h2>
                             <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-                                Join the successful businesses that trust USDF for their dairy and food consulting needs. 
+                                Join the successful businesses that trust USDF for their dairy and food consulting needs.
                                 Let&apos;s discuss how we can help you achieve excellence.
                             </p>
                             <div className="flex flex-col sm:flex-row justify-center gap-4">
@@ -573,6 +564,6 @@ export default function Home() {
             </main>
 
             <Footer />
-        </div>
+        </div >
     )
 }
