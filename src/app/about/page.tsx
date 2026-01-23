@@ -106,19 +106,19 @@ export default function AboutPage() {
                                     About USDF
                                 </Badge>
                             </motion.div>
-                            <motion.h1 
+                            <motion.h1
                                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
                                 variants={fadeInUp}
                             >
                                 Empowering the{" "}
                                 <span className="text-gradient-blue">Dairy & Food</span> Industry
                             </motion.h1>
-                            <motion.p 
+                            <motion.p
                                 className="text-lg md:text-xl text-muted-foreground"
                                 variants={fadeInUp}
                             >
-                                US Dairy and Foods Consulting LLC is a premier consultancy specializing 
-                                in dairy and food industry solutions, committed to driving excellence 
+                                US Dairy and Foods Consulting LLC is a premier consultancy specializing
+                                in dairy and food industry solutions, committed to driving excellence
                                 and innovation in every project.
                             </motion.p>
                         </motion.div>
@@ -145,9 +145,9 @@ export default function AboutPage() {
                                             <p className="text-muted-foreground">Founder & Principal Consultant</p>
                                         </div>
                                     </div>
-                                    
+
                                     {/* Floating badge */}
-                                    <motion.div 
+                                    <motion.div
                                         className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-4 border"
                                         animate={{ y: [0, -10, 0] }}
                                         transition={{ duration: 3, repeat: Infinity }}
@@ -175,13 +175,13 @@ export default function AboutPage() {
                                     Dr. Hasmukh Patel
                                 </h2>
                                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                                    With over two decades of experience in the dairy and food industry, 
-                                    Dr. Hasmukh Patel founded USDF with a vision to transform businesses 
+                                    With over two decades of experience in the dairy and food industry,
+                                    Dr. Hasmukh Patel founded USDF with a vision to transform businesses
                                     through expert guidance and innovative solutions.
                                 </p>
                                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                                    His expertise spans dairy processing, food safety compliance, product 
-                                    development, and operational optimization. Under his leadership, USDF 
+                                    His expertise spans dairy processing, food safety compliance, product
+                                    development, and operational optimization. Under his leadership, USDF
                                     has helped numerous businesses achieve excellence in their operations.
                                 </p>
 
@@ -222,8 +222,8 @@ export default function AboutPage() {
                                     </div>
                                     <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        To be the leading consulting firm that empowers dairy and food 
-                                        businesses with cutting-edge solutions, fostering innovation, 
+                                        To be the leading consulting firm that empowers dairy and food
+                                        businesses with cutting-edge solutions, fostering innovation,
                                         sustainability, and excellence in the industry.
                                     </p>
                                 </Card>
@@ -241,8 +241,8 @@ export default function AboutPage() {
                                     </div>
                                     <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        We strive to deliver strategic insights and customized solutions 
-                                        that enhance food safety, quality, and efficiency, ensuring long-term 
+                                        We strive to deliver strategic insights and customized solutions
+                                        that enhance food safety, quality, and efficiency, ensuring long-term
                                         success for our clients in the ever-evolving food and dairy sector.
                                     </p>
                                 </Card>
@@ -340,7 +340,7 @@ export default function AboutPage() {
                         <div className="relative">
                             {/* Timeline line */}
                             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block" />
-                            
+
                             <div className="space-y-8">
                                 {milestones.map((milestone, i) => (
                                     <motion.div
@@ -380,7 +380,7 @@ export default function AboutPage() {
                                 Ready to Work with Industry Experts?
                             </h2>
                             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                                Partner with USDF and transform your dairy or food business 
+                                Partner with USDF and transform your dairy or food business
                                 with our proven expertise and dedication to excellence.
                             </p>
                             <div className="flex flex-col sm:flex-row justify-center gap-4">

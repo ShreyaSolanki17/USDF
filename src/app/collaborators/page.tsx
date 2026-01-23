@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, Handshake, Building2, Globe, Award, CheckCircle2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/ui/navbar"
@@ -17,30 +18,35 @@ const fadeInUp = {
 const partners = [
     {
         name: "General Mills",
+        logo: "/logos/general-mills.jpg",
         description: "One of the world's largest food companies, known for iconic brands and innovative products.",
         type: "Food & Beverage Giant",
         highlights: ["Process Optimization", "Quality Systems", "R&D Support"]
     },
     {
         name: "Paras/VRS Foods",
+        logo: "/logos/paras.jpg",
         description: "Leading Indian dairy products manufacturer with a strong focus on quality and innovation.",
         type: "Dairy Products",
         highlights: ["Manufacturing Excellence", "Product Development", "Technical Support"]
     },
     {
         name: "Vadilal Ice Cream",
+        logo: "/logos/vadilal.jpg",
         description: "One of India's largest ice cream and frozen desserts manufacturers with global presence.",
         type: "Frozen Desserts",
         highlights: ["Formulation Support", "Process Enhancement", "Quality Assurance"]
     },
     {
         name: "Amul",
+        logo: "/logos/amul.jpg",
         description: "India's largest dairy cooperative, known as the 'Taste of India' with products in millions of homes.",
         type: "Dairy Cooperative",
         highlights: ["Strategic Planning", "Technology Assessment", "Supply Chain"]
     },
     {
         name: "Flavi Dairy Solutions",
+        logo: "/logos/flavi-dairy.jpg",
         description: "Innovative dairy solutions provider focused on flavoring and dairy ingredients.",
         type: "Dairy Ingredients",
         highlights: ["Ingredient Solutions", "Flavor Development", "Application Support"]
@@ -94,19 +100,19 @@ export default function CollaboratorsPage() {
                                     Our Partners
                                 </Badge>
                             </motion.div>
-                            <motion.h1 
+                            <motion.h1
                                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
                                 variants={fadeInUp}
                             >
                                 Trusted by{" "}
                                 <span className="text-gradient-blue">Industry Leaders</span>
                             </motion.h1>
-                            <motion.p 
+                            <motion.p
                                 className="text-lg md:text-xl text-muted-foreground"
                                 variants={fadeInUp}
                             >
-                                We are proud to collaborate with some of the most respected 
-                                names in the dairy and food industry, building partnerships 
+                                We are proud to collaborate with some of the most respected
+                                names in the dairy and food industry, building partnerships
                                 that drive innovation and excellence.
                             </motion.p>
                         </motion.div>
@@ -116,7 +122,7 @@ export default function CollaboratorsPage() {
                 {/* Partners Logos Marquee */}
                 <section className="py-12 bg-white border-y">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-20">
+                        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
                             {partners.map((partner, i) => (
                                 <motion.div
                                     key={partner.name}
@@ -125,9 +131,17 @@ export default function CollaboratorsPage() {
                                     whileHover={{ opacity: 1, scale: 1.05 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="text-center"
+                                    className="text-center flex flex-col items-center gap-3"
                                 >
-                                    <span className="text-2xl md:text-3xl font-bold text-muted-foreground/60 hover:text-primary transition-colors">
+                                    <div className="relative h-16 w-32 md:h-20 md:w-40 transition-all">
+                                        <Image
+                                            src={partner.logo}
+                                            alt={`${partner.name} logo`}
+                                            fill
+                                            className="object-contain"
+                                        />
+                                    </div>
+                                    <span className="text-sm md:text-base font-semibold text-muted-foreground/70">
                                         {partner.name}
                                     </span>
                                 </motion.div>
@@ -163,26 +177,52 @@ export default function CollaboratorsPage() {
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
                                 >
-                                    <Card className="p-6 h-full bg-white hover:shadow-xl transition-all border-border/50 hover:border-primary/20 group">
+                                    <Card className="p-6 h-full bg-white hover:shadow-xl transition-all border-border/50 hover:border-primary/20 group relative">
+                                        {/* Logo - Top Right with animated bracket */}
+                                        <motion.div
+                                            className="absolute top-4 right-4 p-2 rounded-lg border-2 border-primary/30 bg-primary/5"
+                                            whileHover={{ scale: 1.1, borderColor: "rgb(59 130 246)" }}
+                                            animate={{
+                                                boxShadow: [
+                                                    "0 0 0 0 rgba(59, 130, 246, 0)",
+                                                    "0 0 0 4px rgba(59, 130, 246, 0.1)",
+                                                    "0 0 0 0 rgba(59, 130, 246, 0)"
+                                                ]
+                                            }}
+                                            transition={{
+                                                boxShadow: { duration: 2, repeat: Infinity },
+                                                scale: { duration: 0.2 }
+                                            }}
+                                        >
+                                            <div className="relative h-12 w-24">
+                                                <Image
+                                                    src={partner.logo}
+                                                    alt={`${partner.name} logo`}
+                                                    fill
+                                                    className="object-contain"
+                                                />
+                                            </div>
+                                        </motion.div>
+
                                         <div className="mb-4">
                                             <Badge variant="outline" className="text-xs">
                                                 {partner.type}
                                             </Badge>
                                         </div>
-                                        
-                                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+
+                                        <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors pr-32">
                                             {partner.name}
                                         </h3>
-                                        
+
                                         <p className="text-muted-foreground text-sm mb-4">
                                             {partner.description}
                                         </p>
-                                        
+
                                         <div className="pt-4 border-t border-border/50">
                                             <p className="text-xs text-muted-foreground mb-2">Collaboration Areas:</p>
                                             <div className="flex flex-wrap gap-2">
                                                 {partner.highlights.map((highlight, j) => (
-                                                    <span 
+                                                    <span
                                                         key={j}
                                                         className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full"
                                                     >
@@ -250,7 +290,7 @@ export default function CollaboratorsPage() {
                                 Become a Partner
                             </h2>
                             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                                Join our network of industry leaders and let&apos;s collaborate 
+                                Join our network of industry leaders and let&apos;s collaborate
                                 to drive innovation and excellence in the dairy and food industry.
                             </p>
                             <div className="flex flex-col sm:flex-row justify-center gap-4">

@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, TrendingUp, Shield, Factory, Beaker, Lightbulb, Wrench, Building, CheckCircle2, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/ui/navbar"
@@ -123,7 +124,16 @@ export default function ServicesPage() {
             <main className="flex-grow">
                 {/* Hero Section */}
                 <section className="relative py-20 lg:py-32 overflow-hidden">
-                    <div className="absolute inset-0 gradient-blue-light opacity-50" />
+                    {/* Background Image */}
+                    <div className="absolute inset-0">
+                        <Image
+                            src="/Images/services-hero-bg.png"
+                            alt="Dairy facility background"
+                            fill
+                            className="object-cover opacity-60"
+                            priority
+                        />
+                    </div>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                         <motion.div
                             className="text-center max-w-3xl mx-auto"
@@ -139,18 +149,18 @@ export default function ServicesPage() {
                                     Our Services
                                 </Badge>
                             </motion.div>
-                            <motion.h1 
+                            <motion.h1
                                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
                                 variants={fadeInUp}
                             >
                                 Comprehensive{" "}
                                 <span className="text-gradient-blue">Consulting Services</span>
                             </motion.h1>
-                            <motion.p 
+                            <motion.p
                                 className="text-lg md:text-xl text-muted-foreground"
                                 variants={fadeInUp}
                             >
-                                Tailored solutions designed to meet the unique needs of the 
+                                Tailored solutions designed to meet the unique needs of the
                                 dairy and food industry, driving growth and operational excellence.
                             </motion.p>
                         </motion.div>
@@ -177,7 +187,7 @@ export default function ServicesPage() {
                                                 <service.icon className="w-16 h-16 text-white" />
                                             </div>
                                         </div>
-                                        
+
                                         <div className="lg:w-2/3">
                                             <Badge className="mb-4 bg-secondary text-primary border-0">
                                                 Service {String(i + 1).padStart(2, '0')}
@@ -186,7 +196,7 @@ export default function ServicesPage() {
                                             <p className="text-muted-foreground mb-6 text-lg">
                                                 {service.description}
                                             </p>
-                                            
+
                                             <div className="grid sm:grid-cols-2 gap-3 mb-6">
                                                 {service.features.map((feature, j) => (
                                                     <div key={j} className="flex items-start gap-2">
@@ -272,7 +282,7 @@ export default function ServicesPage() {
                                 Need a Custom Solution?
                             </h2>
                             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                                Every business is unique. Let&apos;s discuss how we can tailor our 
+                                Every business is unique. Let&apos;s discuss how we can tailor our
                                 services to meet your specific needs and challenges.
                             </p>
                             <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
