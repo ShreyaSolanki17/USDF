@@ -137,18 +137,18 @@ export default function IndustryPage() {
                                     Industry Sectors
                                 </Badge>
                             </motion.div>
-                            <motion.h1 
+                            <motion.h1
                                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
                                 variants={fadeInUp}
                             >
                                 Expertise Across{" "}
                                 <span className="text-gradient-blue">Industry Sectors</span>
                             </motion.h1>
-                            <motion.p 
+                            <motion.p
                                 className="text-lg md:text-xl text-muted-foreground"
                                 variants={fadeInUp}
                             >
-                                Deep industry knowledge and specialized solutions for every 
+                                Deep industry knowledge and specialized solutions for every
                                 segment of the food and dairy value chain.
                             </motion.p>
                         </motion.div>
@@ -202,7 +202,7 @@ export default function IndustryPage() {
                                                 </Badge>
                                                 <h2 className="text-2xl md:text-3xl font-bold mb-4">{industry.title}</h2>
                                                 <p className="text-muted-foreground mb-6">{industry.description}</p>
-                                                
+
                                                 {/* Features */}
                                                 <div className="space-y-3 mb-8">
                                                     {industry.features.map((feature, j) => (
@@ -238,14 +238,14 @@ export default function IndustryPage() {
                                                         <industry.icon className="w-24 h-24 text-white" />
                                                     </div>
                                                     {/* Floating elements */}
-                                                    <motion.div 
+                                                    <motion.div
                                                         className="absolute -top-4 -right-4 w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center"
                                                         animate={{ y: [0, -10, 0] }}
                                                         transition={{ duration: 3, repeat: Infinity }}
                                                     >
                                                         <Factory className="w-8 h-8 text-primary" />
                                                     </motion.div>
-                                                    <motion.div 
+                                                    <motion.div
                                                         className="absolute -bottom-4 -left-4 w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center"
                                                         animate={{ y: [0, 10, 0] }}
                                                         transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
@@ -274,18 +274,18 @@ export default function IndustryPage() {
                                 Which Industry Are You In?
                             </h2>
                             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                                No matter your sector, we have the expertise to help you 
+                                No matter your sector, we have the expertise to help you
                                 achieve operational excellence and sustainable growth.
                             </p>
                             <div className="flex flex-col sm:flex-row justify-center gap-4">
                                 <Link href="/contact">
-                                    <Button size="lg" className="bg-white text-primary hover:bg-white/90 h-14 px-8">
+                                    <Button size="lg" className="bg-white text-primary hover:bg-blue-50 h-14 px-8 transition-colors">
                                         Let&apos;s Discuss Your Needs
                                         <ArrowRight className="ml-2 w-5 h-5" />
                                     </Button>
                                 </Link>
                                 <Link href="/services">
-                                    <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 h-14 px-8">
+                                    <Button size="lg" variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white/10 hover:text-white h-14 px-8">
                                         Explore Our Services
                                     </Button>
                                 </Link>
