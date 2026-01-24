@@ -76,17 +76,17 @@ export default function ContactPage() {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
         setIsSubmitting(true)
-        
+
         // Format message for WhatsApp
         const whatsappMessage = `*New Contact Inquiry*%0A%0A*Name:* ${encodeURIComponent(formData.name)}%0A*Email:* ${encodeURIComponent(formData.email)}%0A*Phone:* ${encodeURIComponent(formData.phone || 'Not provided')}%0A*Subject:* ${encodeURIComponent(formData.subject)}%0A%0A*Message:*%0A${encodeURIComponent(formData.message)}`
-        
+
         // WhatsApp number (without + and dashes)
         const whatsappNumber = "16056906080"
-        
+
         // Open WhatsApp with pre-filled message
         const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
         window.open(whatsappUrl, '_blank')
-        
+
         setIsSubmitting(false)
         setIsSubmitted(true)
     }
@@ -121,18 +121,18 @@ export default function ContactPage() {
                                     Get In Touch
                                 </Badge>
                             </motion.div>
-                            <motion.h1 
+                            <motion.h1
                                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
                                 variants={fadeInUp}
                             >
                                 Let&apos;s Start a{" "}
                                 <span className="text-gradient-blue">Conversation</span>
                             </motion.h1>
-                            <motion.p 
+                            <motion.p
                                 className="text-lg md:text-xl text-muted-foreground"
                                 variants={fadeInUp}
                             >
-                                Ready to transform your dairy or food business? 
+                                Ready to transform your dairy or food business?
                                 Reach out to us and let&apos;s discuss how we can help you achieve excellence.
                             </motion.p>
                         </motion.div>
@@ -207,7 +207,7 @@ export default function ContactPage() {
                                             <p className="text-muted-foreground mb-6">
                                                 Thank you for reaching out. We&apos;ll get back to you within 24 hours.
                                             </p>
-                                            <Button 
+                                            <Button
                                                 variant="outline"
                                                 onClick={() => {
                                                     setIsSubmitted(false)
@@ -325,27 +325,17 @@ export default function ContactPage() {
                             >
                                 {/* Map Placeholder */}
                                 <Card className="overflow-hidden border-border/50">
-                                    <div className="aspect-[4/3] bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
-                                        <div className="text-center p-8">
-                                            <div className="w-20 h-20 rounded-full gradient-blue flex items-center justify-center mx-auto mb-4">
-                                                <MapPin className="w-10 h-10 text-white" />
-                                            </div>
-                                            <h3 className="font-bold text-lg mb-2">Visit Our Office</h3>
-                                            <p className="text-muted-foreground text-sm mb-4">
-                                                5605 Weston Ln N<br />
-                                                Plymouth, MN 55446, USA
-                                            </p>
-                                            <a 
-                                                href="https://maps.google.com/?q=5605+Weston+Ln+N+Plymouth+MN+55446" 
-                                                target="_blank" 
-                                                rel="noopener noreferrer"
-                                            >
-                                                <Button variant="outline" size="sm">
-                                                    Get Directions
-                                                    <ArrowRight className="ml-2 w-4 h-4" />
-                                                </Button>
-                                            </a>
-                                        </div>
+                                    <div className="aspect-[4/3] bg-gray-100">
+                                        <iframe
+                                            src="https://maps.google.com/maps?q=5605+Weston+Ln+N,+Plymouth,+MN+55446&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                            width="100%"
+                                            height="100%"
+                                            style={{ border: 0 }}
+                                            allowFullScreen
+                                            loading="lazy"
+                                            referrerPolicy="no-referrer-when-downgrade"
+                                            title="USDF Office Location"
+                                        />
                                     </div>
                                 </Card>
 
@@ -353,7 +343,7 @@ export default function ContactPage() {
                                 <Card className="p-6 bg-white border-border/50">
                                     <h3 className="font-bold mb-4">Quick Contact</h3>
                                     <div className="space-y-4">
-                                        <a 
+                                        <a
                                             href="https://wa.me/16056906080?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20consulting%20services."
                                             target="_blank"
                                             rel="noopener noreferrer"
@@ -367,8 +357,8 @@ export default function ContactPage() {
                                                 <p className="text-sm text-green-600">Quick response guaranteed</p>
                                             </div>
                                         </a>
-                                        <a 
-                                            href="tel:+16056906080" 
+                                        <a
+                                            href="tel:+16056906080"
                                             className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors"
                                         >
                                             <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
@@ -379,8 +369,8 @@ export default function ContactPage() {
                                                 <p className="text-sm text-muted-foreground">+1-605-690-6080</p>
                                             </div>
                                         </a>
-                                        <a 
-                                            href="mailto:usdfconsulting@gmail.com" 
+                                        <a
+                                            href="mailto:usdfconsulting@gmail.com"
                                             className="flex items-center gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors"
                                         >
                                             <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">

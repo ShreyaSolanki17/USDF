@@ -123,14 +123,14 @@ export default function ServicesPage() {
 
             <main className="flex-grow">
                 {/* Hero Section */}
-                <section className="relative py-20 lg:py-32 overflow-hidden">
+                <section className="relative py-20 lg:py-32 overflow-hidden bg-black">
                     {/* Background Image */}
                     <div className="absolute inset-0">
                         <Image
                             src="/Images/services-hero-bg.png"
                             alt="Dairy facility background"
                             fill
-                            className="object-cover opacity-60"
+                            className="object-cover opacity-40"
                             priority
                         />
                     </div>
@@ -145,19 +145,19 @@ export default function ServicesPage() {
                             }}
                         >
                             <motion.div variants={fadeInUp}>
-                                <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
+                                <Badge className="mb-6 bg-white/10 text-white border-white/20">
                                     Our Services
                                 </Badge>
                             </motion.div>
                             <motion.h1
-                                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+                                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
                                 variants={fadeInUp}
                             >
                                 Comprehensive{" "}
-                                <span className="text-gradient-blue">Consulting Services</span>
+                                <span className="bg-gradient-to-r from-blue-300 to-white bg-clip-text text-transparent">Consulting Services</span>
                             </motion.h1>
                             <motion.p
-                                className="text-lg md:text-xl text-muted-foreground"
+                                className="text-lg md:text-xl text-blue-100"
                                 variants={fadeInUp}
                             >
                                 Tailored solutions designed to meet the unique needs of the
