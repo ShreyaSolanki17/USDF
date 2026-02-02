@@ -17,101 +17,54 @@ const fadeInUp = {
 
 const services = [
     {
-        id: "strategic-planning",
-        icon: TrendingUp,
-        title: "Strategic Planning",
-        shortDesc: "Market analysis and operational optimization",
-        description: "Comprehensive strategic planning services to help you navigate the competitive dairy and food industry landscape.",
-        features: [
-            "Market analysis and competitive intelligence",
-            "Regulatory requirements assessment",
-            "Operational optimization strategies",
-            "Growth roadmap development",
-            "Risk assessment and mitigation planning"
-        ]
-    },
-    {
-        id: "technology",
-        icon: Shield,
-        title: "Technology Assessment",
-        shortDesc: "System evaluation and automation integration",
-        description: "Expert evaluation of your current systems and guidance on implementing advanced processing technologies.",
-        features: [
-            "Current system evaluation and audit",
-            "Automation integration planning",
-            "Advanced processing technique implementation",
-            "Equipment selection guidance",
-            "Technology ROI analysis"
-        ]
-    },
-    {
-        id: "manufacturing",
-        icon: Factory,
-        title: "Dairy & Food Manufacturing",
-        shortDesc: "Sourcing, formulation, and cost optimization",
-        description: "End-to-end manufacturing consulting for dairy products and food ingredients with focus on quality and efficiency.",
-        features: [
-            "Ingredient sourcing and supply chain optimization",
-            "Formulation development and improvement",
-            "Cost optimization strategies",
-            "Quality control systems",
-            "Production process enhancement"
-        ]
-    },
-    {
-        id: "rd",
-        icon: Beaker,
-        title: "Research & Development",
-        shortDesc: "New product development and nutritional enhancement",
-        description: "Innovative R&D solutions to help you stay ahead of market trends and consumer demands.",
-        features: [
-            "New product development",
-            "Nutritional enhancement strategies",
-            "Consumer insights integration",
-            "Prototype development and testing",
-            "Shelf-life optimization"
-        ]
-    },
-    {
-        id: "product-dev",
+        id: "innovation-strategy",
         icon: Lightbulb,
-        title: "Product Development & Commercialization",
-        shortDesc: "Concept validation to large-scale production",
-        description: "From initial concept to market-ready products, we guide you through every stage of product development.",
+        title: "Innovation & R&D Strategy",
+        shortDesc: "Strategic roadmaps and organizational design",
+        description: "Comprehensive innovation strategy to align R&D with business growth and market opportunities.",
         features: [
-            "Concept validation and feasibility studies",
-            "Pilot production support",
-            "Scale-up to large-scale production",
-            "Market launch strategy",
-            "Post-launch optimization"
+            "Enterprise innovation roadmaps and portfolio prioritization",
+            "R&D organization design and capability development",
+            "Stage-gate, governance, and commercialization frameworks",
+            "Board-level science and technology advisory"
         ]
     },
     {
-        id: "turnkey",
-        icon: Building,
-        title: "Turn-Key Projects",
-        shortDesc: "End-to-end facility and workflow support",
-        description: "Complete project management for new facilities or major upgrades, from planning to commissioning.",
+        id: "product-development",
+        icon: Beaker,
+        title: "Ingredient, Product & Process Development",
+        shortDesc: "From formulation to scale-up",
+        description: "End-to-end development services for dairy and food ingredients, from concept to commercialization.",
         features: [
-            "Facility design and layout planning",
-            "Equipment selection and procurement",
-            "Workflow optimization",
-            "Project timeline management",
-            "Commissioning and startup support"
+            "Dairy and food ingredient development and applications",
+            "Nutrition, sports, medical, and functional food systems",
+            "Product renovation, reformulation, and clean-label strategies",
+            "Process optimization, scale-up, and technology transfer"
         ]
     },
     {
-        id: "technical",
-        icon: Wrench,
-        title: "Technical Support",
-        shortDesc: "Troubleshooting and quality assurance",
-        description: "Ongoing technical support to ensure your operations run smoothly and efficiently.",
+        id: "technology-assessment",
+        icon: Factory,
+        title: "Technology Assessment & Implementation",
+        shortDesc: "Emerging tech and capital projects",
+        description: "Evaluation and implementation of advanced processing technologies to drive operational excellence.",
         features: [
-            "Process troubleshooting",
-            "Quality assurance programs",
-            "Staff training and development",
-            "Compliance monitoring",
-            "Performance optimization"
+            "Evaluation of emerging and disruptive technologies",
+            "Advanced processing: membrane filtration, HPP, extrusion, fermentation",
+            "Capital project and equipment selection support",
+            "Supplier, partner, and technology due diligence"
+        ]
+    },
+    {
+        id: "business-advisory",
+        icon: TrendingUp,
+        title: "Business, Board & Investor Advisory",
+        shortDesc: "Due diligence and strategic partnerships",
+        description: "Expert advisory services for investors, boards, and executive teams navigating the food sector.",
+        features: [
+            "Technical due diligence for M&A, joint ventures, and investments",
+            "Independent board and executive advisory",
+            "Strategic partnerships and supplier negotiations"
         ]
     }
 ]
