@@ -26,16 +26,14 @@ export function Footer() {
                     {/* Brand Column */}
                     <div className="lg:col-span-1">
                         <Link href="/" className="flex items-center gap-3 mb-6">
-                            <div className="w-12 h-12 rounded-xl gradient-blue flex items-center justify-center">
-                                <Milk className="w-7 h-7 text-white" />
-                            </div>
-                            <div className="flex flex-col">
-                                <span className="font-bold text-xl text-white">USDF</span>
-                                <span className="text-[10px] text-slate-400 font-medium tracking-wide">Dairy & Foods Consulting</span>
-                            </div>
+                            <img
+                                src="/Images/usdf-logo.png"
+                                alt="US Dairy & Foods Consulting LLC"
+                                className="w-20 h-20 object-contain"
+                            />
                         </Link>
                         <p className="text-slate-400 text-sm leading-relaxed mb-6">
-                            USA&apos;s Top Food & Dairy Solutions Partner for Business Expansion. 
+                            USA&apos;s Top Food & Dairy Solutions Partner for Business Expansion.
                             Bringing experience, expertise, and excellence to the dairy and food industry.
                         </p>
                         <p className="text-xs text-slate-500">
@@ -96,8 +94,8 @@ export function Footer() {
                             <li className="flex items-start gap-3">
                                 <Mail className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
                                 <div>
-                                    <a 
-                                        href="mailto:usdfconsulting@gmail.com" 
+                                    <a
+                                        href="mailto:usdfconsulting@gmail.com"
                                         className="text-slate-400 hover:text-white text-sm transition-colors"
                                     >
                                         usdfconsulting@gmail.com

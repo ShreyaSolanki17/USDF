@@ -135,15 +135,13 @@ export default function AboutPage() {
                                 viewport={{ once: true }}
                             >
                                 <div className="relative">
-                                    {/* Placeholder for founder image */}
-                                    <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden">
-                                        <div className="text-center p-8">
-                                            <div className="w-32 h-32 mx-auto rounded-full gradient-blue flex items-center justify-center mb-6">
-                                                <GraduationCap className="w-16 h-16 text-white" />
-                                            </div>
-                                            <p className="text-lg font-semibold text-primary">Dr. Hasmukh Patel</p>
-                                            <p className="text-muted-foreground">Founder & Principal Consultant</p>
-                                        </div>
+                                    {/* Founder image */}
+                                    <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+                                        <img
+                                            src="/Images/hasmukh-patel.jpg"
+                                            alt="Dr. Hasmukh Patel - Founder & Principal Consultant"
+                                            className="w-full h-full object-cover"
+                                        />
                                     </div>
 
                                     {/* Floating badge */}
