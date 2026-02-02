@@ -26,11 +26,13 @@ export function Footer() {
                     {/* Brand Column */}
                     <div className="lg:col-span-1">
                         <Link href="/" className="flex items-center gap-3 mb-6">
-                            <img
-                                src="/Images/usdf-logo.png"
-                                alt="US Dairy & Foods Consulting LLC"
-                                className="w-20 h-20 object-contain"
-                            />
+                            <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center overflow-hidden shrink-0">
+                                <img src="/Images/usdf-logo.png" alt="USDF Logo" className="w-full h-full object-contain" />
+                            </div>
+                            <div className="flex flex-col">
+                                <span className="font-bold text-xl text-white">USDF</span>
+                                <span className="text-[10px] text-slate-400 font-medium tracking-wide">Dairy & Foods Consulting</span>
+                            </div>
                         </Link>
                         <p className="text-slate-400 text-sm leading-relaxed mb-6">
                             USA&apos;s Top Food & Dairy Solutions Partner for Business Expansion.
