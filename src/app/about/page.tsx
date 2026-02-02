@@ -142,7 +142,7 @@ export default function AboutPage() {
                                                 <GraduationCap className="w-16 h-16 text-white" />
                                             </div>
                                             <p className="text-lg font-semibold text-primary">Dr. Hasmukh Patel</p>
-                                            <p className="text-muted-foreground">Founder & President | Global Dairy & Food Industry Leader</p>
+                                            <p className="text-muted-foreground">Founder & Principal Consultant</p>
                                         </div>
                                     </div>
 
