@@ -173,8 +173,8 @@ export function FocusRail({
             />
             <div className={cn(
               "absolute inset-0 bg-gradient-to-t",
-              isDark 
-                ? "from-neutral-950 via-neutral-950/50 to-transparent" 
+              isDark
+                ? "from-neutral-950 via-neutral-950/50 to-transparent"
                 : "from-white via-white/70 to-transparent"
             )} />
           </motion.div>
@@ -216,11 +216,11 @@ export function FocusRail({
                 key={absIndex}
                 className={cn(
                   "absolute aspect-[3/4] w-[260px] md:w-[300px] rounded-2xl shadow-2xl transition-shadow duration-300",
-                  isDark 
-                    ? "border-t border-white/20 bg-neutral-900" 
+                  isDark
+                    ? "border-t border-white/20 bg-neutral-900"
                     : "border border-black/10 bg-white",
-                  isCenter 
-                    ? isDark ? "z-20 shadow-white/10" : "z-20 shadow-primary/20" 
+                  isCenter
+                    ? isDark ? "z-20 shadow-white/10" : "z-20 shadow-primary/20"
                     : "z-10"
                 )}
                 initial={false}
@@ -295,16 +295,16 @@ export function FocusRail({
           <div className="flex items-center gap-4">
             <div className={cn(
               "flex items-center gap-1 rounded-full p-1 backdrop-blur-md",
-              isDark 
-                ? "bg-neutral-900/80 ring-1 ring-white/10" 
+              isDark
+                ? "bg-neutral-900/80 ring-1 ring-white/10"
                 : "bg-white/80 ring-1 ring-black/10 shadow-lg"
             )}>
               <button
                 onClick={handlePrev}
                 className={cn(
                   "rounded-full p-3 transition active:scale-95",
-                  isDark 
-                    ? "text-neutral-400 hover:bg-white/10 hover:text-white" 
+                  isDark
+                    ? "text-neutral-400 hover:bg-white/10 hover:text-white"
                     : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
                 )}
                 aria-label="Previous"
@@ -321,8 +321,8 @@ export function FocusRail({
                 onClick={handleNext}
                 className={cn(
                   "rounded-full p-3 transition active:scale-95",
-                  isDark 
-                    ? "text-neutral-400 hover:bg-white/10 hover:text-white" 
+                  isDark
+                    ? "text-neutral-400 hover:bg-white/10 hover:text-white"
                     : "text-muted-foreground hover:bg-primary/10 hover:text-primary"
                 )}
                 aria-label="Next"
@@ -336,8 +336,8 @@ export function FocusRail({
                 href={activeItem.href}
                 className={cn(
                   "group flex items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-transform hover:scale-105 active:scale-95",
-                  isDark 
-                    ? "bg-white text-black" 
+                  isDark
+                    ? "bg-white text-black"
                     : "bg-primary text-white shadow-lg hover:shadow-xl"
                 )}
               >

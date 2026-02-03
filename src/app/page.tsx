@@ -83,7 +83,7 @@ const focusRailItems: FocusRailItem[] = [
         id: 1,
         title: "Dairy Processing Excellence",
         description: "State-of-the-art dairy processing facilities and equipment optimization.",
-        imageSrc: "/photos/dairyimg.jpg",
+        imageSrc: "/Images/dairy-processing-excellence.png",
         href: "/services#technology-assessment",
         meta: "Manufacturing"
     },
@@ -91,7 +91,7 @@ const focusRailItems: FocusRailItem[] = [
         id: 2,
         title: "Quality Assurance",
         description: "Rigorous quality control processes ensuring the highest standards.",
-        imageSrc: "/Images/53690cc4-4537-4d66-a9d0-c9faaf0f8ab0.jpg",
+        imageSrc: "/Images/usdf-qa-v2.png",
         href: "/services#product-development",
         meta: "Quality Control"
     },
@@ -99,7 +99,7 @@ const focusRailItems: FocusRailItem[] = [
         id: 3,
         title: "Research & Development",
         description: "Innovative R&D solutions driving product excellence and market growth.",
-        imageSrc: "/Images/fa30e9fa-ee27-4346-9529-5e578c173d4c.jpg",
+        imageSrc: "/Images/usdf-rd-v3.png",
         href: "/services#innovation-strategy",
         meta: "Innovation"
     },
@@ -107,7 +107,7 @@ const focusRailItems: FocusRailItem[] = [
         id: 4,
         title: "Food Safety Compliance",
         description: "Comprehensive food safety programs meeting global regulatory standards.",
-        imageSrc: "/Images/fb3319a3-54a2-4246-b5b6-da3b2d23e3fe.jpg",
+        imageSrc: "/Images/usdf-food-safety.png",
         href: "/services#product-development",
         meta: "Compliance"
     },
@@ -115,7 +115,7 @@ const focusRailItems: FocusRailItem[] = [
         id: 5,
         title: "Product Development",
         description: "From concept to commercialization - bringing your ideas to market.",
-        imageSrc: "/photos/d2.jpg",
+        imageSrc: "/Images/usdf-development-v2.png",
         href: "/services#product-development",
         meta: "Development"
     }
