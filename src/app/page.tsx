@@ -44,40 +44,28 @@ const coreValues = [
 // Services preview
 const services = [
     {
-        icon: TrendingUp,
-        title: "Strategic Planning",
-        description: "Market analysis, regulatory compliance, and operational optimization strategies.",
-        href: "/services#strategic-planning"
-    },
-    {
-        icon: Shield,
-        title: "Technology Assessment",
-        description: "System evaluation, automation integration, and advanced processing techniques.",
-        href: "/services#technology"
-    },
-    {
-        icon: Factory,
-        title: "Dairy & Food Manufacturing",
-        description: "Sourcing, formulation optimization, and cost-effective ingredient solutions.",
-        href: "/services#manufacturing"
+        icon: Lightbulb,
+        title: "Innovation & R&D Strategy",
+        description: "Enterprise innovation roadmaps, portfolio prioritization, and R&D organization design.",
+        href: "/services#innovation-strategy"
     },
     {
         icon: Beaker,
-        title: "Research & Development",
-        description: "New product development, nutritional enhancement, and consumer insights.",
-        href: "/services#rd"
+        title: "Ingredient & Product Development",
+        description: "From concept to commercialization: formulation, scale-up, and clean-label strategies.",
+        href: "/services#product-development"
     },
     {
-        icon: Lightbulb,
-        title: "Product Development",
-        description: "From concept validation to large-scale commercialization support.",
-        href: "/services#product-dev"
+        icon: Factory,
+        title: "Technology Assessment",
+        description: "Evaluation of emerging technologies, advanced processing, and capital project support.",
+        href: "/services#technology-assessment"
     },
     {
-        icon: Wrench,
-        title: "Technical Support",
-        description: "Troubleshooting, process optimization, and quality assurance.",
-        href: "/services#technical"
+        icon: TrendingUp,
+        title: "Business & Board Advisory",
+        description: "Technical due diligence, M&A support, and strategic partnership negotiations.",
+        href: "/services#business-advisory"
     }
 ]
 
@@ -95,40 +83,40 @@ const focusRailItems: FocusRailItem[] = [
         id: 1,
         title: "Dairy Processing Excellence",
         description: "State-of-the-art dairy processing facilities and equipment optimization.",
-        imageSrc: "/photos/dairyimg.jpg",
-        href: "/services#manufacturing",
+        imageSrc: "/Images/dairy-processing-excellence.png",
+        href: "/services#technology-assessment",
         meta: "Manufacturing"
     },
     {
         id: 2,
         title: "Quality Assurance",
         description: "Rigorous quality control processes ensuring the highest standards.",
-        imageSrc: "/Images/53690cc4-4537-4d66-a9d0-c9faaf0f8ab0.jpg",
-        href: "/services#technical",
+        imageSrc: "/Images/usdf-qa-v2.png",
+        href: "/services#product-development",
         meta: "Quality Control"
     },
     {
         id: 3,
         title: "Research & Development",
         description: "Innovative R&D solutions driving product excellence and market growth.",
-        imageSrc: "/Images/fa30e9fa-ee27-4346-9529-5e578c173d4c.jpg",
-        href: "/services#rd",
+        imageSrc: "/Images/usdf-rd-v3.png",
+        href: "/services#innovation-strategy",
         meta: "Innovation"
     },
     {
         id: 4,
         title: "Food Safety Compliance",
         description: "Comprehensive food safety programs meeting global regulatory standards.",
-        imageSrc: "/Images/fb3319a3-54a2-4246-b5b6-da3b2d23e3fe.jpg",
-        href: "/services#strategic-planning",
+        imageSrc: "/Images/usdf-food-safety.png",
+        href: "/services#product-development",
         meta: "Compliance"
     },
     {
         id: 5,
         title: "Product Development",
         description: "From concept to commercialization - bringing your ideas to market.",
-        imageSrc: "/photos/d2.jpg",
-        href: "/services#product-dev",
+        imageSrc: "/Images/usdf-development-v2.png",
+        href: "/services#product-development",
         meta: "Development"
     }
 ]
@@ -219,7 +207,7 @@ export default function Home() {
                                 <motion.div variants={fadeInUp}>
                                     <Badge className="mb-6 bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 px-4 py-1.5">
                                         <Award className="w-3.5 h-3.5 mr-2" />
-                                        Established 2019 | Plymouth, MN
+                                        Trusted Advisor | Proven Innovator | Global Execution Partner
                                     </Badge>
                                 </motion.div>
 
@@ -227,18 +215,17 @@ export default function Home() {
                                     className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
                                     variants={fadeInUp}
                                 >
-                                    USA&apos;s Top{" "}
-                                    <span className="text-gradient-blue">Food & Dairy</span>
-                                    {" "}Solutions Partner
+                                    Science-Led{" "}
+                                    <span className="text-gradient-blue">Innovation.</span><br />
+                                    Commercially Executed.
                                 </motion.h1>
 
                                 <motion.p
                                     className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl"
                                     variants={fadeInUp}
                                 >
-                                    Expert guidance on dairy processing,
-                                    product development, operational excellence, strategy and growth. Transform your
-                                    business with industry-leading consulting.
+                                    Helping dairy, food, beverage, and nutrition companies achieve sustainable growth
+                                    through innovation, technology, and strategy. We help translate science into scalable, profitable solutions.
                                 </motion.p>
 
                                 <motion.div
