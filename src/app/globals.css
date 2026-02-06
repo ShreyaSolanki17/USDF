@@ -40,21 +40,42 @@
   --radius-xl: calc(var(--radius) + 4px);
 
   @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
   }
 
   @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
   }
 
   @keyframes pulse-glow {
-    0%, 100% { box-shadow: 0 0 20px rgba(59, 89, 152, 0.3); }
-    50% { box-shadow: 0 0 40px rgba(59, 89, 152, 0.6); }
+
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(59, 89, 152, 0.3);
+    }
+
+    50% {
+      box-shadow: 0 0 40px rgba(59, 89, 152, 0.6);
+    }
   }
 
-  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-serif: "Instrument Serif",
+  Georgia,
+  serif;
 
   --radius: var(----radius);
 
@@ -72,6 +93,7 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -82,7 +104,8 @@
 :root {
   /* Base */
   --background: #FFFFFF;
-  --foreground: #1e3a5f; /* Navy for text */
+  --foreground: #1e3a5f;
+  /* Navy for text */
 
   /* Primary - Slate Blue */
   --primary: #3b5998;
@@ -117,7 +140,7 @@
 
   --font-sans: 'Poppins', 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  
+
   /* Legacy vars */
   --bg-0: #0f172a;
   --bg-100: #1e293b;
@@ -164,6 +187,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -192,4 +216,19 @@
 
 .animate-pulse-glow {
   animation: pulse-glow 2s infinite;
+}
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
 }
