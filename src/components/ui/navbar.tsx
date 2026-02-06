@@ -34,9 +34,12 @@ export function Navbar() {
                                     priority
                                 />
                             </div>
-                            <div className="flex flex-col">
-                                <span className="font-bold text-xl tracking-tight text-primary">USDF</span>
-                                <span className="text-[10px] text-muted-foreground font-medium tracking-wide">Dairy & Foods Consulting</span>
+                            <div className="flex flex-col leading-none justify-center">
+                                <div className="flex items-baseline gap-1">
+                                    <span className="font-extrabold text-2xl tracking-tight text-[#1e3a5f]">US</span>
+                                    <span className="font-bold text-lg tracking-tight text-[#3b5998]">Dairy & Foods</span>
+                                </div>
+                                <span className="text-[10px] text-muted-foreground font-semibold tracking-[0.2em] uppercase">Consulting</span>
                             </div>
                         </Link>
                         <div className="hidden lg:ml-12 lg:flex lg:space-x-1">
@@ -45,8 +48,8 @@ export function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     className={cn(
-                                        "text-muted-foreground hover:text-primary",
-                                        "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200",
+                                        "text-[#1e3a5f] hover:text-primary",
+                                        "px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200",
                                         "hover:bg-secondary/50"
                                     )}
                                 >
@@ -68,7 +71,7 @@ export function Navbar() {
                     <div className="flex items-center lg:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="inline-flex items-center justify-center p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-colors"
+                            className="inline-flex items-center justify-center p-2 rounded-lg text-[#1e3a5f] hover:text-primary hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-colors"
                         >
                             <span className="sr-only">Open main menu</span>
                             {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
@@ -88,7 +91,7 @@ export function Navbar() {
                             key={link.name}
                             href={link.href}
                             onClick={() => setIsOpen(false)}
-                            className="block px-4 py-3 rounded-lg text-base font-medium text-muted-foreground hover:text-primary hover:bg-secondary/50 transition-colors"
+                            className="block px-4 py-3 rounded-lg text-base font-bold text-[#1e3a5f] hover:text-primary hover:bg-secondary/50 transition-colors"
                         >
                             {link.name}
                         </Link>

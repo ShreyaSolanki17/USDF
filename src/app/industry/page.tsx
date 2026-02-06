@@ -55,41 +55,22 @@ const industries = [
         ]
     },
     {
-        id: "dairy",
+        id: "dairy-food-ingredients",
         icon: Milk,
-        title: "Dairy Products & Ingredients",
-        shortTitle: "Dairy",
-        description: "Specialized expertise in dairy processing, from milk and cheese manufacturing to advanced dairy ingredients.",
+        title: "Dairy, Food & Ingredients",
+        shortTitle: "Dairy & Food",
+        description: "Specialized expertise in dairy processing and food ingredient manufacturing, from clean-label solutions to advanced functional ingredients.",
         image: "/api/placeholder/600/400",
         features: [
-            "Cheese and milk product manufacturing",
-            "Dairy ingredient processing",
-            "Quality assurance systems",
-            "Sustainability practices",
-            "Equipment optimization"
-        ],
-        stats: [
-            { value: "50+", label: "Dairy Projects" },
-            { value: "20+", label: "Years Experience" }
-        ]
-    },
-    {
-        id: "food-ingredients",
-        icon: Leaf,
-        title: "Food Products & Ingredients",
-        shortTitle: "Food Ingredients",
-        description: "Supporting food ingredient manufacturers with clean-label solutions, plant-based innovations, and functional ingredients.",
-        image: "/api/placeholder/600/400",
-        features: [
+            "Cheese, milk, and dairy ingredient processing",
             "Clean-label product development",
             "Plant-based ingredient solutions",
             "Functional ingredient applications",
-            "Formulation optimization",
-            "Nutritional enhancement"
+            "Formulation optimization & nutritional enhancement"
         ],
         stats: [
-            { value: "35+", label: "Ingredient Projects" },
-            { value: "15+", label: "New Formulations" }
+            { value: "85+", label: "Completed Projects" },
+            { value: "20+", label: "Years Experience" }
         ]
     },
     {
@@ -197,9 +178,7 @@ export default function IndustryPage() {
                                         <div className={`grid lg:grid-cols-2 ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
                                             {/* Content Side */}
                                             <div className={`p-8 lg:p-12 ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
-                                                <Badge className="mb-4 bg-secondary text-primary border-0">
-                                                    Sector {String(i + 1).padStart(2, '0')}
-                                                </Badge>
+
                                                 <h2 className="text-2xl md:text-3xl font-bold mb-4">{industry.title}</h2>
                                                 <p className="text-muted-foreground mb-6">{industry.description}</p>
 

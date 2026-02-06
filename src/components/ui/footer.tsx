@@ -29,9 +29,12 @@ export function Footer() {
                             <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center overflow-hidden shrink-0">
                                 <img src="/Images/usdf-logo.png" alt="USDF Logo" className="w-full h-full object-contain" />
                             </div>
-                            <div className="flex flex-col">
-                                <span className="font-bold text-xl text-white">USDF</span>
-                                <span className="text-[10px] text-slate-400 font-medium tracking-wide">Dairy & Foods Consulting</span>
+                            <div className="flex flex-col leading-none justify-center">
+                                <div className="flex items-baseline gap-1">
+                                    <span className="font-extrabold text-xl tracking-tight text-white">US</span>
+                                    <span className="font-bold text-base tracking-tight text-slate-300">Dairy & Foods</span>
+                                </div>
+                                <span className="text-[10px] text-slate-400 font-semibold tracking-[0.2em] uppercase">Consulting</span>
                             </div>
                         </Link>
                         <p className="text-slate-400 text-sm leading-relaxed mb-6">

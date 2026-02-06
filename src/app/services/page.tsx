@@ -142,9 +142,7 @@ export default function ServicesPage() {
                                         </div>
 
                                         <div className="lg:w-2/3">
-                                            <Badge className="mb-4 bg-secondary text-primary border-0">
-                                                Service {String(i + 1).padStart(2, '0')}
-                                            </Badge>
+
                                             <h2 className="text-2xl md:text-3xl font-bold mb-4">{service.title}</h2>
                                             <p className="text-muted-foreground mb-6 text-lg">
                                                 {service.description}

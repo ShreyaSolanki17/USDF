@@ -19,7 +19,12 @@ const collaborators = [
     { name: "Amul", logo: "/logos/amul.jpg" },
     { name: "Vadilal Ice Cream", logo: "/logos/vadilal.jpg" },
     { name: "Paras/VRS Foods", logo: "/logos/paras.jpg" },
-    { name: "Flavi Dairy Solutions", logo: "/logos/flavi-dairy.jpg" }
+    { name: "Flavi Dairy Solutions", logo: "/logos/flavi-dairy.jpg" },
+    { name: "Everest", logo: "/logos/everest-v2.jpg" },
+    { name: "Continental Milkose (India) Ltd.", logo: "/logos/milkose-v2.png" },
+    { name: "Whitehall Specialties", logo: "/logos/whitehall-v2.jpg" },
+    { name: "PetAg", logo: "/logos/petag-v2.jpg" },
+    { name: "Abali", logo: "/logos/abali-v2.png" }
 ]
 
 // Core values
@@ -72,7 +77,7 @@ const services = [
 // Stats
 const stats = [
     { value: "20+", label: "Years Experience" },
-    { value: "100+", label: "Projects Delivered" },
+    { value: "4+", label: "Categories" },
     { value: "50+", label: "Happy Clients" },
     { value: "5", label: "Industry Sectors" }
 ]
@@ -313,35 +318,36 @@ export default function Home() {
                 </section>
 
                 {/* --- TRUSTED BY --- */}
-                <section className="py-12 border-y bg-white">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                        <p className="text-center text-sm font-semibold text-muted-foreground tracking-wide uppercase mb-8">
+                <section className="py-12 border-y bg-white overflow-hidden">
+                    <div className="w-full">
+                        <p className="text-center text-sm font-semibold text-muted-foreground tracking-wide uppercase mb-10">
                             Trusted by Industry Leaders
                         </p>
-                        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-                            {collaborators.map((company, i) => (
-                                <motion.div
-                                    key={company.name}
-                                    initial={{ opacity: 0 }}
-                                    whileInView={{ opacity: 0.7 }}
-                                    whileHover={{ opacity: 1, scale: 1.05 }}
-                                    transition={{ delay: i * 0.1 }}
-                                    viewport={{ once: true }}
-                                    className="transition-all flex flex-col items-center gap-3"
-                                >
-                                    <div className="relative h-16 w-32 md:h-20 md:w-40 transition-all">
-                                        <Image
-                                            src={company.logo}
-                                            alt={`${company.name} logo`}
-                                            fill
-                                            className="object-contain"
-                                        />
-                                    </div>
-                                    <p className="text-sm md:text-base font-semibold text-muted-foreground/70 text-center">
-                                        {company.name}
-                                    </p>
-                                </motion.div>
-                            ))}
+                        <div className="relative w-full">
+                            <div className="flex w-max animate-scroll hover:pause items-center">
+                                {/* Duplicate list for smooth infinite scroll */}
+                                {[...collaborators, ...collaborators].map((company, i) => (
+                                    <Card
+                                        key={`${company.name}-${i}`}
+                                        className="flex flex-col items-center justify-center p-4 mx-4 w-[200px] h-[130px] flex-shrink-0 bg-white border border-slate-200 shadow-sm hover:shadow-md hover:border-primary/30 transition-all duration-300 group cursor-pointer rounded-xl"
+                                    >
+                                        <div className="relative h-14 w-32 mb-3 transition-all opacity-90 group-hover:opacity-100 group-hover:scale-105 duration-300">
+                                            <Image
+                                                src={company.logo}
+                                                alt={`${company.name} logo`}
+                                                fill
+                                                className="object-contain mix-blend-multiply"
+                                            />
+                                        </div>
+                                        <p className="text-xs font-extrabold text-[#1e3a5f] uppercase tracking-wide text-center leading-tight group-hover:text-primary transition-colors line-clamp-2">
+                                            {company.name}
+                                        </p>
+                                    </Card>
+                                ))}
+                            </div>
+                            {/* Gradient Fade Edges */}
+                            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+                            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
                         </div>
                     </div>
                 </section>
