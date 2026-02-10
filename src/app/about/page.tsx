@@ -71,18 +71,34 @@ const teamValues = [
 
 // Gallery images from public/Images folder
 const galleryImages: GalleryImage[] = [
-    { id: 1, src: "/Images/190989b2-ddca-4056-b6c1-b5340a6582b8.jpg", title: "Dairy Processing Facility", category: "Facilities" },
-    { id: 2, src: "/Images/1ab1ebb9-81cb-414a-bb11-461e481ccc1f.jpg", title: "Quality Control Lab", category: "Quality Assurance" },
-    { id: 3, src: "/Images/2858f32f-408f-4bd6-96ab-922ff10418cf.jpg", title: "Production Line", category: "Manufacturing" },
-    { id: 4, src: "/Images/298714ba-1d32-4f55-8650-9c00ddee05bd.jpg", title: "Product Development", category: "R&D" },
-    { id: 5, src: "/Images/33096980-87cb-4b6b-b646-cd3f8ea7f0af.jpg", title: "Food Safety Inspection", category: "Compliance" },
-    { id: 6, src: "/Images/35d3d88d-dcf3-4f27-9b46-3cd5f1dd0f76.jpg", title: "Client Consultation", category: "Services" },
-    { id: 7, src: "/Images/45643cbb-391e-4aeb-a56d-359fb8390c61.jpg", title: "Equipment Installation", category: "Turn-Key Projects" },
-    { id: 8, src: "/Images/461b8eab-342e-4419-9b0f-46b0f1ce29b3.jpg", title: "Team Training Session", category: "Technical Support" },
-    { id: 9, src: "/Images/5323bb94-2eb8-4ead-85fa-0541843eeda3.jpg", title: "Dairy Plant Operations", category: "Operations" },
-    { id: 10, src: "/Images/53690cc4-4537-4d66-a9d0-c9faaf0f8ab0.jpg", title: "Innovation Workshop", category: "R&D" },
-    { id: 11, src: "/Images/6182b197-e091-47f3-99a2-437987fa889f.jpg", title: "Industry Conference", category: "Events" },
-    { id: 12, src: "/Images/86e1346b-8ff6-480b-983b-18e289f31e11.jpg", title: "Modern Processing Technology", category: "Technology" },
+    { id: 1, src: "/Images/53690cc4-4537-4d66-a9d0-c9faaf0f8ab0.jpg", title: "Dairy Processing", category: "Facilities" },
+    { id: 2, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.34%20AM.jpeg", title: "Quality Control", category: "Quality" },
+    { id: 3, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.35%20AM%20(1).jpeg", title: "Production Line", category: "Manufacturing" },
+    { id: 4, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.35%20AM%20(2).jpeg", title: "R&D Lab", category: "R&D" },
+    { id: 5, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.35%20AM.jpeg", title: "Food Safety", category: "Compliance" },
+    { id: 6, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.36%20AM%20(1).jpeg", title: "Consultation", category: "Services" },
+    { id: 7, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.36%20AM.jpeg", title: "Installation", category: "Projects" },
+    { id: 8, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.40%20AM.jpeg", title: "Training", category: "Support" },
+    { id: 9, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.42%20AM%20(1).jpeg", title: "Operations", category: "Operations" },
+    { id: 10, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.42%20AM%20(2).jpeg", title: "Innovation", category: "Innovation" },
+    { id: 11, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.42%20AM.jpeg", title: "Dairy Processing", category: "Facilities" },
+    { id: 12, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.43%20AM%20(1).jpeg", title: "Quality Control", category: "Quality" },
+    { id: 13, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.43%20AM%20(2).jpeg", title: "Production Line", category: "Manufacturing" },
+    { id: 14, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.43%20AM.jpeg", title: "R&D Lab", category: "R&D" },
+    { id: 15, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.44%20AM%20(1).jpeg", title: "Food Safety", category: "Compliance" },
+    { id: 16, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.44%20AM%20(2).jpeg", title: "Consultation", category: "Services" },
+    { id: 17, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.44%20AM.jpeg", title: "Installation", category: "Projects" },
+    { id: 18, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.45%20AM%20(1).jpeg", title: "Training", category: "Support" },
+    { id: 19, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.45%20AM.jpeg", title: "Operations", category: "Operations" },
+    { id: 20, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.46%20AM%20(1).jpeg", title: "Innovation", category: "Innovation" },
+    { id: 21, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.46%20AM%20(2).jpeg", title: "Dairy Processing", category: "Facilities" },
+    { id: 22, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.46%20AM.jpeg", title: "Quality Control", category: "Quality" },
+    { id: 23, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.47%20AM%20(1).jpeg", title: "Production Line", category: "Manufacturing" },
+    { id: 24, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.47%20AM.jpeg", title: "R&D Lab", category: "R&D" },
+    { id: 25, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.48%20AM%20(1).jpeg", title: "Food Safety", category: "Compliance" },
+    { id: 26, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.48%20AM%20(2).jpeg", title: "Consultation", category: "Services" },
+    { id: 27, src: "/Images/WhatsApp%20Image%202026-02-10%20at%2010.20.48%20AM.jpeg", title: "Installation", category: "Projects" },
+    { id: 28, src: "/Images/aa99e3ac-a476-4805-b435-a53b5f9f1bc0%20(1).jpg", title: "Training", category: "Support" },
 ]
 
 export default function AboutPage() {
@@ -106,19 +122,19 @@ export default function AboutPage() {
                                     About USDF
                                 </Badge>
                             </motion.div>
-                            <motion.h1 
+                            <motion.h1
                                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
                                 variants={fadeInUp}
                             >
                                 Empowering the{" "}
                                 <span className="text-gradient-blue">Dairy & Food</span> Industry
                             </motion.h1>
-                            <motion.p 
+                            <motion.p
                                 className="text-lg md:text-xl text-muted-foreground"
                                 variants={fadeInUp}
                             >
-                                US Dairy and Foods Consulting LLC is a premier consultancy specializing 
-                                in dairy and food industry solutions, committed to driving excellence 
+                                US Dairy and Foods Consulting LLC is a premier consultancy specializing
+                                in dairy and food industry solutions, committed to driving excellence
                                 and innovation in every project.
                             </motion.p>
                         </motion.div>
@@ -145,9 +161,9 @@ export default function AboutPage() {
                                             <p className="text-muted-foreground">Founder & Principal Consultant</p>
                                         </div>
                                     </div>
-                                    
+
                                     {/* Floating badge */}
-                                    <motion.div 
+                                    <motion.div
                                         className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl p-4 border"
                                         animate={{ y: [0, -10, 0] }}
                                         transition={{ duration: 3, repeat: Infinity }}
@@ -175,13 +191,13 @@ export default function AboutPage() {
                                     Dr. Hasmukh Patel
                                 </h2>
                                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                                    With over two decades of experience in the dairy and food industry, 
-                                    Dr. Hasmukh Patel founded USDF with a vision to transform businesses 
+                                    With over two decades of experience in the dairy and food industry,
+                                    Dr. Hasmukh Patel founded USDF with a vision to transform businesses
                                     through expert guidance and innovative solutions.
                                 </p>
                                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                                    His expertise spans dairy processing, food safety compliance, product 
-                                    development, and operational optimization. Under his leadership, USDF 
+                                    His expertise spans dairy processing, food safety compliance, product
+                                    development, and operational optimization. Under his leadership, USDF
                                     has helped numerous businesses achieve excellence in their operations.
                                 </p>
 
@@ -222,8 +238,8 @@ export default function AboutPage() {
                                     </div>
                                     <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        To be the leading consulting firm that empowers dairy and food 
-                                        businesses with cutting-edge solutions, fostering innovation, 
+                                        To be the leading consulting firm that empowers dairy and food
+                                        businesses with cutting-edge solutions, fostering innovation,
                                         sustainability, and excellence in the industry.
                                     </p>
                                 </Card>
@@ -241,8 +257,8 @@ export default function AboutPage() {
                                     </div>
                                     <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
                                     <p className="text-muted-foreground leading-relaxed">
-                                        We strive to deliver strategic insights and customized solutions 
-                                        that enhance food safety, quality, and efficiency, ensuring long-term 
+                                        We strive to deliver strategic insights and customized solutions
+                                        that enhance food safety, quality, and efficiency, ensuring long-term
                                         success for our clients in the ever-evolving food and dairy sector.
                                     </p>
                                 </Card>
@@ -340,7 +356,7 @@ export default function AboutPage() {
                         <div className="relative">
                             {/* Timeline line */}
                             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block" />
-                            
+
                             <div className="space-y-8">
                                 {milestones.map((milestone, i) => (
                                     <motion.div
@@ -380,7 +396,7 @@ export default function AboutPage() {
                                 Ready to Work with Industry Experts?
                             </h2>
                             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                                Partner with USDF and transform your dairy or food business 
+                                Partner with USDF and transform your dairy or food business
                                 with our proven expertise and dedication to excellence.
                             </p>
                             <div className="flex flex-col sm:flex-row justify-center gap-4">
