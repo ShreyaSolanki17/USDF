@@ -1,8 +1,9 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
-import { Menu, X, Milk } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
@@ -24,12 +25,21 @@ export function Navbar() {
                 <div className="flex justify-between h-20">
                     <div className="flex items-center">
                         <Link href="/" className="flex-shrink-0 flex items-center gap-3 group">
-                            <div className="w-12 h-12 rounded-xl gradient-blue flex items-center justify-center text-white font-bold shadow-lg group-hover:shadow-xl transition-shadow">
-                                <Milk className="w-7 h-7" />
+                            <div className="relative w-20 h-20 flex-shrink-0">
+                                <Image
+                                    src="/Images/usdf-logo.png"
+                                    alt="USDF Logo"
+                                    fill
+                                    className="object-contain"
+                                    priority
+                                />
                             </div>
-                            <div className="flex flex-col">
-                                <span className="font-bold text-xl tracking-tight text-primary">USDF</span>
-                                <span className="text-[10px] text-muted-foreground font-medium tracking-wide">Dairy & Foods Consulting</span>
+                            <div className="flex flex-col leading-none justify-center">
+                                <div className="flex items-baseline gap-1">
+                                    <span className="font-extrabold text-2xl tracking-tight text-[#1e3a5f]">US</span>
+                                    <span className="font-bold text-lg tracking-tight text-[#3b5998]">Dairy & Foods</span>
+                                </div>
+                                <span className="text-[10px] text-muted-foreground font-semibold tracking-[0.2em] uppercase">Consulting</span>
                             </div>
                         </Link>
                         <div className="hidden lg:ml-12 lg:flex lg:space-x-1">
@@ -38,8 +48,8 @@ export function Navbar() {
                                     key={link.name}
                                     href={link.href}
                                     className={cn(
-                                        "text-muted-foreground hover:text-primary",
-                                        "px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200",
+                                        "text-[#1e3a5f] hover:text-primary",
+                                        "px-4 py-2 rounded-lg text-sm font-bold transition-all duration-200",
                                         "hover:bg-secondary/50"
                                     )}
                                 >
@@ -50,8 +60,8 @@ export function Navbar() {
                     </div>
                     <div className="hidden lg:flex items-center space-x-4">
                         <Link href="/contact">
-                            <Button 
-                                variant="default" 
+                            <Button
+                                variant="default"
                                 className="gradient-blue hover:opacity-90 text-white shadow-lg hover:shadow-xl transition-all"
                             >
                                 Get Consultation
@@ -61,7 +71,7 @@ export function Navbar() {
                     <div className="flex items-center lg:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="inline-flex items-center justify-center p-2 rounded-lg text-muted-foreground hover:text-primary hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-colors"
+                            className="inline-flex items-center justify-center p-2 rounded-lg text-[#1e3a5f] hover:text-primary hover:bg-secondary/50 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-colors"
                         >
                             <span className="sr-only">Open main menu</span>
                             {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
@@ -81,7 +91,7 @@ export function Navbar() {
                             key={link.name}
                             href={link.href}
                             onClick={() => setIsOpen(false)}
-                            className="block px-4 py-3 rounded-lg text-base font-medium text-muted-foreground hover:text-primary hover:bg-secondary/50 transition-colors"
+                            className="block px-4 py-3 rounded-lg text-base font-bold text-[#1e3a5f] hover:text-primary hover:bg-secondary/50 transition-colors"
                         >
                             {link.name}
                         </Link>

@@ -133,9 +133,9 @@ export default function AboutPage() {
                                 className="text-lg md:text-xl text-muted-foreground"
                                 variants={fadeInUp}
                             >
-                                US Dairy and Foods Consulting LLC is a premier consultancy specializing
-                                in dairy and food industry solutions, committed to driving excellence
-                                and innovation in every project.
+                                US Dairy & Foods Consulting LLC operates at the intersection of science, technology, and
+                                business. We are an independent, execution-focused firm providing strategic advisory, technical
+                                due diligence, and hands-on leadership for complex innovation and transformation initiatives.
                             </motion.p>
                         </motion.div>
                     </div>
@@ -151,15 +151,14 @@ export default function AboutPage() {
                                 viewport={{ once: true }}
                             >
                                 <div className="relative">
-                                    {/* Placeholder for founder image */}
-                                    <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center overflow-hidden">
-                                        <div className="text-center p-8">
-                                            <div className="w-32 h-32 mx-auto rounded-full gradient-blue flex items-center justify-center mb-6">
-                                                <GraduationCap className="w-16 h-16 text-white" />
-                                            </div>
-                                            <p className="text-lg font-semibold text-primary">Dr. Hasmukh Patel</p>
-                                            <p className="text-muted-foreground">Founder & Principal Consultant</p>
-                                        </div>
+                                    {/* Founder image */}
+                                    <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative group">
+                                        <img
+                                            src="/Images/hasmukh-patel.jpg"
+                                            alt="Dr. Hasmukh Patel"
+                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                        />
+                                        <div className="absolute inset-0 ring-1 ring-inset ring-black/10 rounded-3xl" />
                                     </div>
 
                                     {/* Floating badge */}
@@ -174,7 +173,7 @@ export default function AboutPage() {
                                             </div>
                                             <div>
                                                 <p className="font-bold">20+ Years</p>
-                                                <p className="text-xs text-muted-foreground">Industry Experience</p>
+                                                <p className="text-xs text-muted-foreground">International Experience</p>
                                             </div>
                                         </div>
                                     </motion.div>
@@ -188,18 +187,44 @@ export default function AboutPage() {
                             >
                                 <Badge className="mb-4 bg-secondary text-primary border-0">Meet Our Founder</Badge>
                                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                                    Dr. Hasmukh Patel
+                                    Dr. Hasmukh Patel, Ph.D.
                                 </h2>
                                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                                    With over two decades of experience in the dairy and food industry,
-                                    Dr. Hasmukh Patel founded USDF with a vision to transform businesses
-                                    through expert guidance and innovative solutions.
+                                    Dr. Hasmukh Patel is a globally recognized dairy and food science leader with over 20 years of
+                                    international experience across the USA, New Zealand, Europe, China, and India. He holds a
+                                    Ph.D. in Food Technology from Massey University (New Zealand) and advanced degrees in
+                                    Dairy Science and Technology.
                                 </p>
                                 <p className="text-muted-foreground mb-8 leading-relaxed">
-                                    His expertise spans dairy processing, food safety compliance, product
-                                    development, and operational optimization. Under his leadership, USDF
-                                    has helped numerous businesses achieve excellence in their operations.
+                                    Dr. Patel currently serves as Chief Science & Innovation Officer at Nutracom LLC and is the
+                                    Founder and President of US Dairy & Foods Consulting LLC. His prior leadership roles include
+                                    Senior Director of Global R&D at Mengniu Dairy Group (China), Vice President of R&D at
+                                    Whitehall Specialties (now Ornua), and Technical Director & R&D Fellow at Land O’Lakes,
+                                    Inc. Earlier in his career, he served as faculty at South Dakota State University and spent more
+                                    than a decade at Fonterra Research & Development Centre in New Zealand.
                                 </p>
+
+                                <div className="space-y-4 mb-8">
+                                    <h3 className="font-semibold text-primary">Credentials & Global Recognition</h3>
+                                    <ul className="space-y-2 text-sm text-muted-foreground">
+                                        <li className="flex gap-2">
+                                            <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                                            Inventor / co-inventor of 10+ patents and proprietary technologies
+                                        </li>
+                                        <li className="flex gap-2">
+                                            <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                                            Author of 100+ peer-reviewed publications, book chapters, and invited presentations
+                                        </li>
+                                        <li className="flex gap-2">
+                                            <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                                            Recipient of multiple international awards in dairy and food science
+                                        </li>
+                                        <li className="flex gap-2">
+                                            <CheckCircle2 className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+                                            Expert advisor to FAO/WHO on protein quality and global nutrition initiatives
+                                        </li>
+                                    </ul>
+                                </div>
 
                                 <div className="flex flex-wrap gap-4 mb-8">
                                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -401,13 +426,13 @@ export default function AboutPage() {
                             </p>
                             <div className="flex flex-col sm:flex-row justify-center gap-4">
                                 <Link href="/contact">
-                                    <Button size="lg" className="bg-white text-primary hover:bg-white/90 h-14 px-8">
+                                    <Button size="lg" className="bg-white text-primary hover:bg-blue-50 h-14 px-8 transition-colors">
                                         Get in Touch
                                         <ArrowRight className="ml-2 w-5 h-5" />
                                     </Button>
                                 </Link>
                                 <Link href="/services">
-                                    <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 h-14 px-8">
+                                    <Button size="lg" variant="outline" className="bg-transparent border-2 border-white text-white hover:bg-white/10 hover:text-white h-14 px-8 transition-colors">
                                         View Our Services
                                     </Button>
                                 </Link>

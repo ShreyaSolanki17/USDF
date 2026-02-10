@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight, TrendingUp, Shield, Factory, Beaker, Lightbulb, Wrench, Building, CheckCircle2, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Navbar } from "@/components/ui/navbar"
@@ -16,101 +17,54 @@ const fadeInUp = {
 
 const services = [
     {
-        id: "strategic-planning",
-        icon: TrendingUp,
-        title: "Strategic Planning",
-        shortDesc: "Market analysis and operational optimization",
-        description: "Comprehensive strategic planning services to help you navigate the competitive dairy and food industry landscape.",
-        features: [
-            "Market analysis and competitive intelligence",
-            "Regulatory requirements assessment",
-            "Operational optimization strategies",
-            "Growth roadmap development",
-            "Risk assessment and mitigation planning"
-        ]
-    },
-    {
-        id: "technology",
-        icon: Shield,
-        title: "Technology Assessment",
-        shortDesc: "System evaluation and automation integration",
-        description: "Expert evaluation of your current systems and guidance on implementing advanced processing technologies.",
-        features: [
-            "Current system evaluation and audit",
-            "Automation integration planning",
-            "Advanced processing technique implementation",
-            "Equipment selection guidance",
-            "Technology ROI analysis"
-        ]
-    },
-    {
-        id: "manufacturing",
-        icon: Factory,
-        title: "Dairy & Food Manufacturing",
-        shortDesc: "Sourcing, formulation, and cost optimization",
-        description: "End-to-end manufacturing consulting for dairy products and food ingredients with focus on quality and efficiency.",
-        features: [
-            "Ingredient sourcing and supply chain optimization",
-            "Formulation development and improvement",
-            "Cost optimization strategies",
-            "Quality control systems",
-            "Production process enhancement"
-        ]
-    },
-    {
-        id: "rd",
-        icon: Beaker,
-        title: "Research & Development",
-        shortDesc: "New product development and nutritional enhancement",
-        description: "Innovative R&D solutions to help you stay ahead of market trends and consumer demands.",
-        features: [
-            "New product development",
-            "Nutritional enhancement strategies",
-            "Consumer insights integration",
-            "Prototype development and testing",
-            "Shelf-life optimization"
-        ]
-    },
-    {
-        id: "product-dev",
+        id: "innovation-strategy",
         icon: Lightbulb,
-        title: "Product Development & Commercialization",
-        shortDesc: "Concept validation to large-scale production",
-        description: "From initial concept to market-ready products, we guide you through every stage of product development.",
+        title: "Innovation & R&D Strategy",
+        shortDesc: "Strategic roadmaps and organizational design",
+        description: "Comprehensive innovation strategy to align R&D with business growth and market opportunities.",
         features: [
-            "Concept validation and feasibility studies",
-            "Pilot production support",
-            "Scale-up to large-scale production",
-            "Market launch strategy",
-            "Post-launch optimization"
+            "Enterprise innovation roadmaps and portfolio prioritization",
+            "R&D organization design and capability development",
+            "Stage-gate, governance, and commercialization frameworks",
+            "Board-level science and technology advisory"
         ]
     },
     {
-        id: "turnkey",
-        icon: Building,
-        title: "Turn-Key Projects",
-        shortDesc: "End-to-end facility and workflow support",
-        description: "Complete project management for new facilities or major upgrades, from planning to commissioning.",
+        id: "product-development",
+        icon: Beaker,
+        title: "Ingredient, Product & Process Development",
+        shortDesc: "From formulation to scale-up",
+        description: "End-to-end development services for dairy and food ingredients, from concept to commercialization.",
         features: [
-            "Facility design and layout planning",
-            "Equipment selection and procurement",
-            "Workflow optimization",
-            "Project timeline management",
-            "Commissioning and startup support"
+            "Dairy and food ingredient development and applications",
+            "Nutrition, sports, medical, and functional food systems",
+            "Product renovation, reformulation, and clean-label strategies",
+            "Process optimization, scale-up, and technology transfer"
         ]
     },
     {
-        id: "technical",
-        icon: Wrench,
-        title: "Technical Support",
-        shortDesc: "Troubleshooting and quality assurance",
-        description: "Ongoing technical support to ensure your operations run smoothly and efficiently.",
+        id: "technology-assessment",
+        icon: Factory,
+        title: "Technology Assessment & Implementation",
+        shortDesc: "Emerging tech and capital projects",
+        description: "Evaluation and implementation of advanced processing technologies to drive operational excellence.",
         features: [
-            "Process troubleshooting",
-            "Quality assurance programs",
-            "Staff training and development",
-            "Compliance monitoring",
-            "Performance optimization"
+            "Evaluation of emerging and disruptive technologies",
+            "Advanced processing: membrane filtration, HPP, extrusion, fermentation",
+            "Capital project and equipment selection support",
+            "Supplier, partner, and technology due diligence"
+        ]
+    },
+    {
+        id: "business-advisory",
+        icon: TrendingUp,
+        title: "Business, Board & Investor Advisory",
+        shortDesc: "Due diligence and strategic partnerships",
+        description: "Expert advisory services for investors, boards, and executive teams navigating the food sector.",
+        features: [
+            "Technical due diligence for M&A, joint ventures, and investments",
+            "Independent board and executive advisory",
+            "Strategic partnerships and supplier negotiations"
         ]
     }
 ]
@@ -122,8 +76,17 @@ export default function ServicesPage() {
 
             <main className="flex-grow">
                 {/* Hero Section */}
-                <section className="relative py-20 lg:py-32 overflow-hidden">
-                    <div className="absolute inset-0 gradient-blue-light opacity-50" />
+                <section className="relative py-20 lg:py-32 overflow-hidden bg-black">
+                    {/* Background Image */}
+                    <div className="absolute inset-0">
+                        <Image
+                            src="/Images/services-hero-bg.png"
+                            alt="Dairy facility background"
+                            fill
+                            className="object-cover opacity-40"
+                            priority
+                        />
+                    </div>
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                         <motion.div
                             className="text-center max-w-3xl mx-auto"
@@ -135,22 +98,22 @@ export default function ServicesPage() {
                             }}
                         >
                             <motion.div variants={fadeInUp}>
-                                <Badge className="mb-6 bg-primary/10 text-primary border-primary/20">
+                                <Badge className="mb-6 bg-white/10 text-white border-white/20">
                                     Our Services
                                 </Badge>
                             </motion.div>
-                            <motion.h1 
-                                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+                            <motion.h1
+                                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
                                 variants={fadeInUp}
                             >
                                 Comprehensive{" "}
-                                <span className="text-gradient-blue">Consulting Services</span>
+                                <span className="bg-gradient-to-r from-blue-300 to-white bg-clip-text text-transparent">Consulting Services</span>
                             </motion.h1>
-                            <motion.p 
-                                className="text-lg md:text-xl text-muted-foreground"
+                            <motion.p
+                                className="text-lg md:text-xl text-blue-100"
                                 variants={fadeInUp}
                             >
-                                Tailored solutions designed to meet the unique needs of the 
+                                Tailored solutions designed to meet the unique needs of the
                                 dairy and food industry, driving growth and operational excellence.
                             </motion.p>
                         </motion.div>
@@ -177,16 +140,14 @@ export default function ServicesPage() {
                                                 <service.icon className="w-16 h-16 text-white" />
                                             </div>
                                         </div>
-                                        
+
                                         <div className="lg:w-2/3">
-                                            <Badge className="mb-4 bg-secondary text-primary border-0">
-                                                Service {String(i + 1).padStart(2, '0')}
-                                            </Badge>
+
                                             <h2 className="text-2xl md:text-3xl font-bold mb-4">{service.title}</h2>
                                             <p className="text-muted-foreground mb-6 text-lg">
                                                 {service.description}
                                             </p>
-                                            
+
                                             <div className="grid sm:grid-cols-2 gap-3 mb-6">
                                                 {service.features.map((feature, j) => (
                                                     <div key={j} className="flex items-start gap-2">
@@ -272,7 +233,7 @@ export default function ServicesPage() {
                                 Need a Custom Solution?
                             </h2>
                             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-                                Every business is unique. Let&apos;s discuss how we can tailor our 
+                                Every business is unique. Let&apos;s discuss how we can tailor our
                                 services to meet your specific needs and challenges.
                             </p>
                             <div className="flex flex-col sm:flex-row justify-center items-center gap-6">

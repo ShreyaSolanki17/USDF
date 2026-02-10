@@ -6,22 +6,25 @@ import { Toaster } from "@/components/ui/sonner"
 
 import "./globals.css"
 
-const poppins = Poppins({
+// Primary font - Inter (more reliable)
+const inter = Inter({
   variable: "--font-sans",
+  subsets: ["latin"],
+  display: 'swap',
+})
+
+const poppins = Poppins({
+  variable: "--font-poppins",
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   display: 'swap',
+  fallback: ['system-ui', 'arial'],
+  preload: true,
+  adjustFontFallback: true,
 })
 
 const mono = JetBrains_Mono({
   variable: "--font-mono",
-  subsets: ["latin"],
-  display: 'swap',
-})
-
-// Fallback font just in case
-const inter = Inter({
-  variable: "--font-inter",
   subsets: ["latin"],
   display: 'swap',
 })
@@ -46,7 +49,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${poppins.variable} ${mono.variable} ${inter.variable} font-sans antialiased`}
+        className={`${inter.variable} ${poppins.variable} ${mono.variable} font-sans antialiased`}
+        suppressHydrationWarning
       >
         <ThemeProvider
           attribute="class"
