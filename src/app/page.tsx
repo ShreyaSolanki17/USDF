@@ -120,7 +120,7 @@ const focusRailItems: FocusRailItem[] = [
         id: 5,
         title: "Product Development",
         description: "From concept to commercialization - bringing your ideas to market.",
-        imageSrc: "/Images/usdf-development-v2.png",
+        imageSrc: "/Images/product-development.png",
         href: "/services#product-development",
         meta: "Development"
     }

@@ -20,66 +20,140 @@ interface PhotoGalleryProps {
 
 export function PhotoGallery({ images, className }: PhotoGalleryProps) {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(0);
+  const imagesPerPage = 4;
+  const totalPages = Math.ceil(images.length / imagesPerPage);
+
+  const currentImages = images.slice(
+    currentPage * imagesPerPage,
+    (currentPage + 1) * imagesPerPage
+  );
 
   const openLightbox = (image: GalleryImage, index: number) => {
     setSelectedImage(image);
-    setCurrentIndex(index);
+    // index here is the index within the current page, we need the global index
+    const globalIndex = currentPage * imagesPerPage + index;
+    setLightboxIndex(globalIndex);
   };
 
   const closeLightbox = () => {
     setSelectedImage(null);
   };
 
-  const goToPrevious = () => {
-    const newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
+  const goToPreviousLightbox = () => {
+    const newIndex = lightboxIndex === 0 ? images.length - 1 : lightboxIndex - 1;
+    setLightboxIndex(newIndex);
     setSelectedImage(images[newIndex]);
   };
 
-  const goToNext = () => {
-    const newIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
+  const goToNextLightbox = () => {
+    const newIndex = lightboxIndex === images.length - 1 ? 0 : lightboxIndex + 1;
+    setLightboxIndex(newIndex);
     setSelectedImage(images[newIndex]);
   };
+
+  const goToPreviousPage = () => {
+    setCurrentPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
+  };
+
+  const goToNextPage = () => {
+    setCurrentPage((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
+  };
+
+  React.useEffect(() => {
+    // Only auto-slide if the lightbox is closed
+    if (selectedImage) return;
+
+    const timer = setInterval(() => {
+      goToNextPage();
+    }, 4000); // Change slide every 4 seconds
+
+    return () => clearInterval(timer);
+  }, [totalPages, selectedImage]);
 
   return (
     <>
-      {/* Gallery Grid */}
-      <div className={cn("grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4", className)}>
-        {images.map((image, index) => (
+      {/* Gallery Grid Setup mapping over currentImages */}
+      <div className="relative">
+        <AnimatePresence mode="wait">
           <motion.div
-            key={image.id}
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.05 }}
-            className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-shadow"
-            onClick={() => openLightbox(image, index)}
+            key={currentPage}
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.3 }}
+            className={cn("grid grid-cols-2 md:grid-cols-4 gap-4", className)}
           >
-            <Image
-              src={image.src}
-              alt={image.title}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-              sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-            />
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                  <ZoomIn className="w-6 h-6 text-white" />
+            {currentImages.map((image, index) => (
+              <motion.div
+                key={image.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.05 }}
+                className="group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-shadow"
+                onClick={() => openLightbox(image, index)}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(max-width: 768px) 50vw, 25vw"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <ZoomIn className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <p className="text-white font-medium text-sm truncate">{image.title}</p>
+                    {image.category && (
+                      <p className="text-white/70 text-xs">{image.category}</p>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <p className="text-white font-medium text-sm truncate">{image.title}</p>
-                {image.category && (
-                  <p className="text-white/70 text-xs">{image.category}</p>
-                )}
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </motion.div>
-        ))}
+        </AnimatePresence>
+
+        {/* Slider Navigation */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-4 mt-8">
+            <button
+              onClick={goToPreviousPage}
+              className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors text-primary"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <div className="flex gap-2">
+              {Array.from({ length: totalPages }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentPage(i)}
+                  className={cn(
+                    "h-2 rounded-full transition-all",
+                    i === currentPage ? "w-8 bg-primary" : "w-2 bg-primary/30 hover:bg-primary/50"
+                  )}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={goToNextPage}
+              className="w-10 h-10 rounded-full bg-primary/10 hover:bg-primary/20 flex items-center justify-center transition-colors text-primary"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Lightbox */}
@@ -105,7 +179,7 @@ export function PhotoGallery({ images, className }: PhotoGalleryProps) {
               className="absolute left-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
               onClick={(e) => {
                 e.stopPropagation();
-                goToPrevious();
+                goToPreviousLightbox();
               }}
             >
               <ChevronLeft className="w-6 h-6 text-white" />
@@ -115,7 +189,7 @@ export function PhotoGallery({ images, className }: PhotoGalleryProps) {
               className="absolute right-4 top-1/2 -translate-y-1/2 z-50 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
               onClick={(e) => {
                 e.stopPropagation();
-                goToNext();
+                goToNextLightbox();
               }}
             >
               <ChevronRight className="w-6 h-6 text-white" />
@@ -143,7 +217,7 @@ export function PhotoGallery({ images, className }: PhotoGalleryProps) {
                   <p className="text-white/70 text-sm">{selectedImage.category}</p>
                 )}
                 <p className="text-white/50 text-xs mt-2">
-                  {currentIndex + 1} / {images.length}
+                  {lightboxIndex + 1} / {images.length}
                 </p>
               </div>
             </motion.div>
@@ -155,12 +229,12 @@ export function PhotoGallery({ images, className }: PhotoGalleryProps) {
                   key={image.id}
                   onClick={(e) => {
                     e.stopPropagation();
-                    setCurrentIndex(index);
+                    setLightboxIndex(index);
                     setSelectedImage(image);
                   }}
                   className={cn(
                     "relative w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 transition-all",
-                    index === currentIndex
+                    index === lightboxIndex
                       ? "ring-2 ring-white scale-105"
                       : "opacity-50 hover:opacity-80"
                   )}

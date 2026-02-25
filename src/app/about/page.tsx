@@ -363,7 +363,7 @@ export default function AboutPage() {
                     </div>
                 </section>
 
-                {/* Timeline */}
+                {/* Timeline Section Commented Out
                 <section className="py-20 bg-white">
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                         <motion.div
@@ -379,7 +379,6 @@ export default function AboutPage() {
                         </motion.div>
 
                         <div className="relative">
-                            {/* Timeline line */}
                             <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block" />
 
                             <div className="space-y-8">
@@ -408,6 +407,7 @@ export default function AboutPage() {
                         </div>
                     </div>
                 </section>
+                */}
 
                 {/* CTA */}
                 <section className="py-20 gradient-blue text-white">
